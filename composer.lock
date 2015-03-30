@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "912bad1d76735b207bcc1b5f74ffa6db",
+    "hash": "05e9e4bd8fe2f2ff00234a0930e6bbfd",
     "packages": [
         {
             "name": "composer/installers",
@@ -100,50 +100,6 @@
                 "zikula"
             ],
             "time": "2015-02-18 17:17:01"
-        },
-        {
-            "name": "dsawardekar/encase-php",
-            "version": "0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dsawardekar/encase-php.git",
-                "reference": "348784176c8666ea5eceeed5d429b2ddbf4ab7e0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dsawardekar/encase-php/zipball/348784176c8666ea5eceeed5d429b2ddbf4ab7e0",
-                "reference": "348784176c8666ea5eceeed5d429b2ddbf4ab7e0",
-                "shasum": ""
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~3.7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Encase\\": "src/Encase"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Darshan Sawardekar",
-                    "email": "darshan@sawardekar.org",
-                    "homepage": "http://pressing-matters.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Lightweight IOC container for PHP",
-            "homepage": "http://github.com/dsawardekar/encase-php",
-            "keywords": [
-                "container",
-                "dependency injection",
-                "ioc"
-            ],
-            "time": "2014-06-06 11:58:13"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -255,73 +211,6 @@
             "time": "2015-03-20 19:14:34"
         },
         {
-            "name": "lamosty/blog-helper",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lamosty/lamosty-blog-helper.git",
-                "reference": "a98ad96d81cd2f4c1184061887e8d2479a855b3c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lamosty/lamosty-blog-helper/zipball/a98ad96d81cd2f4c1184061887e8d2479a855b3c",
-                "reference": "a98ad96d81cd2f4c1184061887e8d2479a855b3c",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "1.0.21",
-                "lamosty/wp-plugin-stack": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "autoload": {
-                "psr-4": {
-                    "Lamosty\\Blog_Helper\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Rastislav Lamos",
-                    "email": "lamos.rasto@gmail.com"
-                }
-            ],
-            "time": "2015-03-16 08:30:17"
-        },
-        {
-            "name": "lamosty/wp-plugin-stack",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lamosty/wp-plugin-stack.git",
-                "reference": "a6e9f411b245fd79a28065017a99b658296e4160"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lamosty/wp-plugin-stack/zipball/a6e9f411b245fd79a28065017a99b658296e4160",
-                "reference": "a6e9f411b245fd79a28065017a99b658296e4160",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Lamosty\\WP_Plugin_Stack\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPLv2"
-            ],
-            "authors": [
-                {
-                    "name": "Rastislav Lamos",
-                    "email": "lamos.rasto@gmail.com",
-                    "homepage": "https://lamosty.com"
-                }
-            ],
-            "description": "WP Plugin Stack is a set of libraries and helpers to aid in plugin development. Work in progress.",
-            "time": "2015-02-06 09:06:43"
-        },
-        {
             "name": "vlucas/phpdotenv",
             "version": "v1.0.9",
             "source": {
@@ -371,174 +260,6 @@
                 "environment"
             ],
             "time": "2014-10-16 14:50:21"
-        },
-        {
-            "name": "wpackagist-plugin/crayon-syntax-highlighter",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/crayon-syntax-highlighter/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/crayon-syntax-highlighter.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/crayon-syntax-highlighter/",
-            "time": "2014-12-21 11:58:52"
-        },
-        {
-            "name": "wpackagist-plugin/custom-sidebars",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/custom-sidebars/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/custom-sidebars.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/custom-sidebars/",
-            "time": "2015-01-22 00:20:38"
-        },
-        {
-            "name": "wpackagist-plugin/disqus-comment-system",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/disqus-comment-system/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/disqus-comment-system.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/disqus-comment-system/",
-            "time": "2014-12-09 00:15:49"
-        },
-        {
-            "name": "wpackagist-plugin/google-analytics-dashboard-for-wp",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/google-analytics-dashboard-for-wp/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-dashboard-for-wp.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/google-analytics-dashboard-for-wp/",
-            "time": "2015-02-24 16:56:37"
-        },
-        {
-            "name": "wpackagist-plugin/jetpack",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/jetpack/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/jetpack/",
-            "time": "2015-03-12 20:41:15"
-        },
-        {
-            "name": "wpackagist-plugin/wordpress-seo",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wordpress-seo/",
-            "time": "2015-03-11 21:58:29"
-        },
-        {
-            "name": "wpackagist-plugin/wp-pagenavi",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wp-pagenavi/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-pagenavi.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-pagenavi/",
-            "time": "2014-12-18 03:30:44"
-        },
-        {
-            "name": "wpackagist-plugin/wp-postviews",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wp-postviews/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-postviews.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-postviews/",
-            "time": "2014-12-18 03:22:59"
         }
     ],
     "packages-dev": [
@@ -562,27 +283,6 @@
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/debug-bar-console/",
             "time": "2012-08-07 20:42:00"
-        },
-        {
-            "name": "wpackagist-plugin/p3-profiler",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/p3-profiler/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/p3-profiler.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/p3-profiler/",
-            "time": "2015-03-09 22:46:16"
         },
         {
             "name": "wpackagist-plugin/query-monitor",
@@ -630,18 +330,9 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "wpackagist-plugin/crayon-syntax-highlighter": 20,
-        "wpackagist-plugin/custom-sidebars": 20,
-        "wpackagist-plugin/disqus-comment-system": 20,
-        "wpackagist-plugin/google-analytics-dashboard-for-wp": 20,
-        "wpackagist-plugin/jetpack": 20,
-        "wpackagist-plugin/wordpress-seo": 20,
-        "wpackagist-plugin/wp-pagenavi": 20,
-        "wpackagist-plugin/wp-postviews": 20,
         "wpackagist-plugin/query-monitor": 20,
         "wpackagist-plugin/debug-bar-console": 20,
-        "wpackagist-plugin/rewrite-rules-inspector": 20,
-        "wpackagist-plugin/p3-profiler": 20
+        "wpackagist-plugin/rewrite-rules-inspector": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
