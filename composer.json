@@ -1,0 +1,57 @@
+{
+    "type": "project",
+    "license": "GPL2",
+    "description": "Rentiflat",
+    "homepage": "https://rentiflat.lamosty.com/",
+    "authors": [
+        {
+            "name": "Rastislav Lamos",
+            "email": "lamos.rasto@gmail.com",
+            "homepage": "https://github.com/lamosty"
+        }
+    ],
+    "keywords": [
+        "flat renting",
+        "flats directory"
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "generate-salts": true
+    },
+    "autoload": {
+        "psr-0": {"Roots\\Bedrock\\Installer": "scripts"},
+        "psr-4": {
+            "Lamosty\\RentiFlat\\": "web/app/themes/rentiflat-theme/src/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": ["Roots\\Bedrock\\Installer::addSalts"]
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://wpackagist.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "1.0.21",
+        "vlucas/phpdotenv": "1.0.9",
+        "johnpbloch/wordpress": "4.1.1",
+        "lamosty/bedrock-plugin-control": "~0.1.1"
+    },
+    "require-dev": {
+        "wpackagist-plugin/query-monitor": "dev-trunk",
+        "wpackagist-plugin/debug-bar-console": "dev-trunk",
+        "wpackagist-plugin/rewrite-rules-inspector": "dev-trunk"
+
+    },
+    "extra": {
+        "installer-paths": {
+            "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+            "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
+            "web/app/themes/{$name}/": ["type:wordpress-theme"]
+        },
+        "wordpress-install-dir": "web/wp"
+    }
+}

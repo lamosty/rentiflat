@@ -1,0 +1,50 @@
+# Application
+web/app/plugins/*
+!web/app/plugins/.gitkeep
+web/app/mu-plugins/*
+!web/app/mu-plugins/.gitkeep
+web/app/upgrade
+web/app/uploads/*
+!web/app/uploads/.gitkeep
+!web/app/mu-plugins/disallow-indexing.php
+!web/app/mu-plugins/register-theme-directory.php
+!web/app/mu-plugins/bedrock-autoloader.php
+!web/app/mu-plugins/show-admin-bar.php
+
+# Dev Plugins
+web/app/db.php
+
+# WordPress
+web/wp
+web/.htaccess
+
+# WP-CLI
+db-sync
+sql-dump-*.sql
+
+# Dotenv
+.env
+.env.*
+!.env.example
+
+# Vendor (e.g. Composer)
+vendor/*
+!vendor/.gitkeep
+
+# Node Package Manager
+node_modules
+
+# Vagrant
+bin
+.vagrant
+
+# Dev Environment
+.idea
+.DS_Store
+.bundle
+
+# Theme front-end packages and stuff
+dist
+bower_components
+node_modules
+npm-debug.log
