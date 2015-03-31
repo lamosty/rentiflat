@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "05e9e4bd8fe2f2ff00234a0930e6bbfd",
+    "hash": "3a2259c864b4d88abc80766b0f48f9cb",
     "packages": [
         {
             "name": "composer/installers",
@@ -100,6 +100,50 @@
                 "zikula"
             ],
             "time": "2015-02-18 17:17:01"
+        },
+        {
+            "name": "dsawardekar/encase-php",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dsawardekar/encase-php.git",
+                "reference": "348784176c8666ea5eceeed5d429b2ddbf4ab7e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dsawardekar/encase-php/zipball/348784176c8666ea5eceeed5d429b2ddbf4ab7e0",
+                "reference": "348784176c8666ea5eceeed5d429b2ddbf4ab7e0",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Encase\\": "src/Encase"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Darshan Sawardekar",
+                    "email": "darshan@sawardekar.org",
+                    "homepage": "http://pressing-matters.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Lightweight IOC container for PHP",
+            "homepage": "http://github.com/dsawardekar/encase-php",
+            "keywords": [
+                "container",
+                "dependency injection",
+                "ioc"
+            ],
+            "time": "2014-06-06 11:58:13"
         },
         {
             "name": "johnpbloch/wordpress",
