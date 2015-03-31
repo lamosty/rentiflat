@@ -1,6 +1,3 @@
-### 1.0.0: 2015-03-15
-
-* Lamosty.com source code made public
-* Moved to Bedrock
-* Use Make theme as basis for blog design
-* Lamosty moved to custom VPS hosting
+### 1.0.0: March 31th, 2015
+* Use roots/sage as a basis for the application
+* Remove unwanted files, code and configurations
