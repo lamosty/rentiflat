@@ -6,8 +6,6 @@
 namespace Lamosty\RentiFlat;
 
 use Encase\Container;
-use Lamosty\RentiFlat\RentiFlat;
-
 
 function initialize_IOC() {
 	$container = new Container();

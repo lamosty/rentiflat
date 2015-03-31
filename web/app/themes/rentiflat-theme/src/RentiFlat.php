@@ -5,7 +5,7 @@
 
 namespace Lamosty\RentiFlat;
 
-use Lamosty\RentiFlat\Helper_Functions;
+use Lamosty\RentiFlat\Utils;
 
 final class RentiFlat {
 	const VERSION = '1.0.0';
@@ -14,12 +14,18 @@ final class RentiFlat {
 
 	public function init() {
 		$this->add_wp_actions();
+
+		$this->add_wp_filters();
 	}
 
 	private function add_wp_actions() {
 		add_action( 'after_setup_theme', array( $this, 'setup_theme' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+	}
+
+	private function add_wp_filters() {
+		add_filter('template_include', __NAMESPACE__ . '\Utils\Theme_Wrapper::wrap', 99);
 	}
 
 	public function setup_theme() {
@@ -31,13 +37,13 @@ final class RentiFlat {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'rentiflat-main-js', Helper_Functions\asset_path( 'scripts/main.js' ),
+		wp_enqueue_script( 'rentiflat-main-js', Utils\asset_path( 'scripts/main.js' ),
 			[ ], null, true
 		);
 	}
 
 	public function enqueue_styles() {
-		wp_enqueue_style( 'rentiflat-main-css', Helper_Functions\asset_path( 'styles/main.css' ),
+		wp_enqueue_style( 'rentiflat-main-css', Utils\asset_path( 'styles/main.css' ),
 			[ ], null );
 	}
 }
