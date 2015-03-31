@@ -57,7 +57,4 @@ class Theme_Wrapper {
 	}
 }
 
-function template_path() {
-	return Theme_Wrapper::$main_template;
-}
 

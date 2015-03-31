@@ -37,13 +37,13 @@ final class RentiFlat {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'rentiflat-main-js', Utils\asset_path( 'scripts/main.js' ),
+		wp_enqueue_script( 'rentiflat-main-js', asset_path( 'scripts/main.js' ),
 			[ ], null, true
 		);
 	}
 
 	public function enqueue_styles() {
-		wp_enqueue_style( 'rentiflat-main-css', Utils\asset_path( 'styles/main.css' ),
+		wp_enqueue_style( 'rentiflat-main-css', asset_path( 'styles/main.css' ),
 			[ ], null );
 	}
 }
