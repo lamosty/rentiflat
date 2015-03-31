@@ -37,6 +37,8 @@ final class RentiFlat {
 	}
 
 	public function enqueue_scripts() {
+		wp_enqueue_script('modernizr', asset_path('scripts/modernizr.js'), [], null, true);
+		wp_enqueue_script('jquery');
 		wp_enqueue_script( 'rentiflat-main-js', asset_path( 'scripts/main.js' ),
 			[ ], null, true
 		);
