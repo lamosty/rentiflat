@@ -5,8 +5,6 @@
 
 namespace Lamosty\RentiFlat\Utils;
 
-use Lamosty\RentiFlat\RentiFlat;
-
 class JSON_Manifest {
 	private $manifest;
 

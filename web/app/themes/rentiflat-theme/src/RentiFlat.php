@@ -12,10 +12,23 @@ final class RentiFlat {
 	const TEXT_DOMAIN = 'rentiflat-theme';
 	const DIST_DIR = '/dist/';
 
+	/** @var Flat_Controller $flat_controller */
+	public $flat_controller;
+
+	/**
+	 * IOC dependencies
+	 */
+	public function needs() {
+		return [
+			'flat_controller'
+		];
+	}
+
 	public function init() {
 		$this->add_wp_actions();
-
 		$this->add_wp_filters();
+
+		$this->flat_controller->init();
 	}
 
 	private function add_wp_actions() {
@@ -25,7 +38,7 @@ final class RentiFlat {
 	}
 
 	private function add_wp_filters() {
-		add_filter('template_include', __NAMESPACE__ . '\Utils\Theme_Wrapper::wrap', 99);
+		add_filter( 'template_include', __NAMESPACE__ . '\Utils\Theme_Wrapper::wrap', 99 );
 	}
 
 	public function setup_theme() {
@@ -37,8 +50,8 @@ final class RentiFlat {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script('modernizr', asset_path('scripts/modernizr.js'), [], null, true);
-		wp_enqueue_script('jquery');
+		wp_enqueue_script( 'modernizr', asset_path( 'scripts/modernizr.js' ), [ ], null, true );
+		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'rentiflat-main-js', asset_path( 'scripts/main.js' ),
 			[ ], null, true
 		);

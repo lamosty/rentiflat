@@ -13,7 +13,8 @@ function initialize_IOC() {
 	$container
 		->object( 'RentiFlat', function () {
 			return new RentiFlat();
-		} );
+		} )
+		->singleton( 'flat_controller', __NAMESPACE__ . '\Flat_Controller' );
 
 	return $container;
 }
@@ -23,7 +24,7 @@ function initialize_app( Container $container ) {
 	/** @var RentiFlat $rentiflat */
 	$rentiflat = $container->lookup( 'RentiFlat' );
 
-	$rentiflat->init();
+	add_action( 'init', [ $rentiflat, 'init' ] );
 }
 
 $container = initialize_IOC();
