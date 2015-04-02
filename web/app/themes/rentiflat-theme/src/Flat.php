@@ -5,7 +5,7 @@
 
 namespace Lamosty\RentiFlat;
 
-class Flat_Controller {
+class Flat {
 
 	public function init() {
 		$this->register_flat_post_type();

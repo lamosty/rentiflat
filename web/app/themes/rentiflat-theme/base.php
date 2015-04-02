@@ -5,7 +5,7 @@
 
 namespace Lamosty\RentiFlat;
 
-use Lamosty\RentiFlat\Utils;
+use Lamosty\RentiFlat\Utils\Template_Helper;
 
 ?>
 
@@ -30,7 +30,7 @@ do_action( 'get_header' );
 <div class="wrap container" role="document">
 	<div class="content row">
 		<main class="main" role="main">
-			<?php include template_path(); ?>
+			<?php include Template_Helper::template_path(); ?>
 		</main>
 		<!-- /.main -->
 

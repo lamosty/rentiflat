@@ -6,21 +6,25 @@
 namespace Lamosty\RentiFlat;
 
 use Lamosty\RentiFlat\Utils;
+use Lamosty\RentiFlat\Utils\Template_Helper;
 
 final class RentiFlat {
 	const VERSION = '1.0.0';
 	const TEXT_DOMAIN = 'rentiflat-theme';
 	const DIST_DIR = '/dist/';
 
-	/** @var Flat_Controller $flat_controller */
-	public $flat_controller;
+	/** @var \WP $wp */
+	protected $wp;
+
+	/** @var Flat $flat */
+	public $flat;
 
 	/**
 	 * IOC dependencies
 	 */
 	public function needs() {
 		return [
-			'flat_controller'
+			'flat'
 		];
 	}
 
@@ -28,7 +32,7 @@ final class RentiFlat {
 		$this->add_wp_actions();
 		$this->add_wp_filters();
 
-		$this->flat_controller->init();
+		$this->flat->init();
 	}
 
 	private function add_wp_actions() {
@@ -39,6 +43,7 @@ final class RentiFlat {
 
 	private function add_wp_filters() {
 		add_filter( 'template_include', __NAMESPACE__ . '\Utils\Theme_Wrapper::wrap', 99 );
+
 	}
 
 	public function setup_theme() {
@@ -50,15 +55,15 @@ final class RentiFlat {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'modernizr', asset_path( 'scripts/modernizr.js' ), [ ], null, true );
+		wp_enqueue_script( 'modernizr', Template_Helper::asset_path( 'scripts/modernizr.js' ), [ ], null, true );
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'rentiflat-main-js', asset_path( 'scripts/main.js' ),
+		wp_enqueue_script( 'rentiflat-main-js', Template_Helper::asset_path( 'scripts/main.js' ),
 			[ ], null, true
 		);
 	}
 
 	public function enqueue_styles() {
-		wp_enqueue_style( 'rentiflat-main-css', asset_path( 'styles/main.css' ),
+		wp_enqueue_style( 'rentiflat-main-css', Template_Helper::asset_path( 'styles/main.css' ),
 			[ ], null );
 	}
 }

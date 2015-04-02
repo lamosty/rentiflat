@@ -14,7 +14,7 @@ function initialize_IOC() {
 		->object( 'RentiFlat', function () {
 			return new RentiFlat();
 		} )
-		->singleton( 'flat_controller', __NAMESPACE__ . '\Flat_Controller' );
+		->singleton( 'flat', __NAMESPACE__ . '\Flat' );
 
 	return $container;
 }

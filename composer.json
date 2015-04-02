@@ -22,10 +22,7 @@
         "psr-0": {"Roots\\Bedrock\\Installer": "scripts"},
         "psr-4": {
             "Lamosty\\RentiFlat\\": "web/app/themes/rentiflat-theme/src/"
-        },
-        "files": [
-            "web/app/themes/rentiflat-theme/src//utils/helper-functions.php"
-        ]
+        }
     },
     "scripts": {
         "post-root-package-install": ["Roots\\Bedrock\\Installer::addSalts"]
