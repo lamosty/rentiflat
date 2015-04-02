@@ -20,13 +20,6 @@ use Lamosty\RentiFlat\Utils\Template_Helper;
 
 <body <?php body_class(); ?>>
 
-<?php
-
-do_action( 'get_header' );
-
-
-?>
-
 <div class="wrap container" role="document">
 	<div class="content row">
 		<main class="main" role="main">
