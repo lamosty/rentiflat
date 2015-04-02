@@ -13,8 +13,9 @@ final class RentiFlat {
 	const TEXT_DOMAIN = 'rentiflat-theme';
 	const DIST_DIR = '/dist/';
 
-	/** @var \WP $wp */
-	protected $wp;
+
+	/** @var Theme $theme */
+	public $theme;
 
 	/** @var Flat $flat */
 	public $flat;
@@ -24,21 +25,26 @@ final class RentiFlat {
 	 */
 	public function needs() {
 		return [
+			'theme',
 			'flat'
 		];
 	}
 
 	public function init() {
+		$this->theme->init();
+		$this->flat->init();
+
 		$this->add_wp_actions();
 		$this->add_wp_filters();
 
-		$this->flat->init();
 	}
 
 	private function add_wp_actions() {
-		add_action( 'after_setup_theme', array( $this, 'setup_theme' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+
+		add_action( 'after_setup_theme', [ $this, 'setup_theme' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+
 	}
 
 	private function add_wp_filters() {
