@@ -41,7 +41,7 @@
 				<div class="col-md-12">
 					<ul class="main-features">
 						<li>
-							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							<i class="mdi-action-search" aria-hidden="true"></i>
 
 							<h3>Feature #1</h3>
 
@@ -50,7 +50,7 @@
 							</p>
 						</li>
 						<li>
-							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							<i class="mdi-action-search" aria-hidden="true"></i>
 
 							<h3>Feature #2</h3>
 
@@ -59,7 +59,7 @@
 							</p>
 						</li>
 						<li>
-							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							<i class="mdi-action-search" aria-hidden="true"></i>
 
 							<h3>Feature #3</h3>
 
@@ -90,14 +90,14 @@
 					</div>
 
 					<div class="feature-block">
-						<span class="glyphicon glyphicon-globe"></span>
+						<i class="mdi-maps-hotel"></i>
 
 						<h3>Wordlwide</h3>
 
 						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempo</p>
 					</div>
 					<div class="feature-block">
-						<span class="glyphicon glyphicon-globe"></span>
+						<i class="mdi-social-location-city"></i>
 
 						<h3>Wordlwide</h3>
 
@@ -123,14 +123,14 @@
 					</div>
 
 					<div class="feature-block">
-						<span class="glyphicon glyphicon-globe"></span>
+						<i class="mdi-maps-hotel"></i>
 
 						<h3>Wordlwide</h3>
 
 						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempo</p>
 					</div>
 					<div class="feature-block">
-						<span class="glyphicon glyphicon-globe"></span>
+						<i class="mdi-social-location-city"></i>
 
 						<h3>Wordlwide</h3>
 
