@@ -26,12 +26,7 @@ use Lamosty\RentiFlat\Utils\Template_Helper;
 
 <?php include Template_Helper::template_path(); ?>
 
-<?php
-
-
-wp_footer();
-
-?>
+<?php get_template_part('templates/partials/site-footer'); ?>
 </body>
 </html>
 
