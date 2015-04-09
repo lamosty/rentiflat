@@ -329,6 +329,26 @@
             "time": "2012-08-07 20:42:00"
         },
         {
+            "name": "wpackagist-plugin/options-importer",
+            "version": 5,
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/options-importer/",
+                "reference": "tags/5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/options-importer.5.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/options-importer/"
+        },
+        {
             "name": "wpackagist-plugin/query-monitor",
             "version": "dev-trunk",
             "source": {

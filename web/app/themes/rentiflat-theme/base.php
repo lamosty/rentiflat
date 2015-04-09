@@ -20,17 +20,11 @@ use Lamosty\RentiFlat\Utils\Template_Helper;
 
 <body <?php body_class(); ?>>
 
-<div class="wrap container" role="document">
-	<div class="content row">
-		<main class="main" role="main">
-			<?php include Template_Helper::template_path(); ?>
-		</main>
-		<!-- /.main -->
+<header id="site-header">
+	<?php get_template_part('templates/partials/site-nav'); ?>
+</header>
 
-	</div>
-	<!-- /.content -->
-</div>
-<!-- /.wrap -->
+<?php include Template_Helper::template_path(); ?>
 
 <?php
 
