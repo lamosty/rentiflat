@@ -61,10 +61,18 @@ final class RentiFlat {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'modernizr', Template_Helper::asset_path( 'scripts/modernizr.js' ), [ ], null, true );
-		wp_enqueue_script( 'jquery' );
+		// Deregister WordPress jQuery and register our own
+		wp_deregister_script( 'jquery' );
+		wp_register_script( 'jquery', Template_Helper::asset_path( 'scripts/jquery.js' ), [ ], null, true );
+
+		wp_register_script( 'modernizr', Template_Helper::asset_path( 'scripts/modernizr.js' ), [ ], null, true );
+
 		wp_enqueue_script( 'rentiflat-main-js', Template_Helper::asset_path( 'scripts/main.js' ),
-			[ ], null, true
+			[
+				'modernizr',
+				'jquery'
+			],
+			null, true
 		);
 	}
 
