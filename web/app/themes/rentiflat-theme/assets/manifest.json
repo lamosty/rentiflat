@@ -1,25 +1,26 @@
 {
-  "dependencies": {
-    "main.js": {
-      "files": [
-        "scripts/main.js"
-      ],
-      "main": true
+    "dependencies": {
+        "main.js": {
+            "files": [
+                "scripts/main.js"
+            ],
+            "main": true
+        },
+        "main.css": {
+            "files": [
+                "styles/main.scss",
+                "styles/main.less"
+            ],
+            "main": true
+        },
+        "jquery.js": {
+            "bower": ["jquery"]
+        },
+        "modernizr.js": {
+            "bower": ["modernizr"]
+        }
     },
-    "main.css": {
-      "files": [
-        "styles/main.scss"
-      ],
-      "main": true
-    },
-    "jquery.js": {
-      "bower": ["jquery"]
-    },
-    "modernizr.js": {
-      "bower": ["modernizr"]
+    "config": {
+        "devUrl": "http://dev.rentiflat.lamosty.com"
     }
-  },
-  "config": {
-    "devUrl": "http://dev.rentiflat.lamosty.com"
-  }
 }

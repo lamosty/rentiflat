@@ -164,7 +164,9 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 center">
-					Browse all flats
+					<button class="btn btn-primary">
+						Browse all flats
+					</button>
 				</div>
 			</div>
 		</div>

@@ -7,6 +7,7 @@
     var RentiFlat = {
         'common': {
             init: function () {
+                $.material.init();
             },
             finalize: function () {
             }

@@ -9,8 +9,8 @@
     "dependencies": {
         "modernizr": "2.8.2",
         "jquery": "~2",
-        "bootstrap-sass-official": "~3.3.4",
-        "bootstrap-material-design": "~0.3"
+        "bootstrap-material-design": "~0.3",
+        "bootstrap-sass-official": "~3.3.4"
     },
     "overrides": {
         "modernizr": {
@@ -31,6 +31,18 @@
                 "./assets/javascripts/bootstrap/scrollspy.js",
                 "./assets/javascripts/bootstrap/tab.js",
                 "./assets/javascripts/bootstrap/affix.js"
+            ]
+        },
+        "bootstrap-material-design": {
+            "main": [
+                "./less/material.less",
+                "dist/js/material.js",
+                "dist/css/ripples.css",
+                "dist/js/ripples.js",
+                "dist/fonts/Material-Design-Icons.eot",
+                "dist/fonts/Material-Design-Icons.svg",
+                "dist/fonts/Material-Design-Icons.ttf",
+                "dist/fonts/Material-Design-Icons.woff"
             ]
         }
     }
