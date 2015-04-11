@@ -1,0 +1,43 @@
+body {
+  background-color: #fff;
+}
+
+.center {
+  text-align: center;
+}
+
+.heading {
+  display: inline-block;
+  margin-bottom: 50px;
+
+  h1 {
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+
+  .subheadline {
+    font-size: 21px;
+    line-height: 27px;
+    margin-bottom: 50px;
+  }
+
+  &.center {
+    &:after {
+      margin: 0 auto;
+    }
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: #ccc;
+  }
+}
+
+.bg-silver {
+  background: radial-gradient(ellipse at center, rgba(254,253,254,0.95) 0%,rgba(240,240,240,0.95) 100%);
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+}

@@ -1,0 +1,46 @@
+/*---------------------------------------------------------
+ Landing Page (index.php)
+-------------------------------------------------------- */
+
+.features-overview {
+  padding-bottom: 100px;
+  padding-top: 190px;
+}
+
+.main-features {
+  .feature {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 30px;
+
+    i {
+      font-size: 36px;
+      color: $primary-color;
+      width: 80px;
+      height: 80px;
+      display: inline-block;
+      border: 1px solid $primary-color;
+      text-align: center;
+      border-radius: 50%;
+      padding-top: 20px;
+      transition: all 0.2s;
+    }
+
+    h3 {
+      font-size: 24px;
+      color: $gray-800;
+      text-transform: uppercase;
+      font-weight: 100;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 20px;
+      color: $gray;
+    }
+
+  }
+}

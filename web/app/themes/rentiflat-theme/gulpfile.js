@@ -70,9 +70,6 @@ var cssTasks = function (filename) {
             return $.if(enabled.maps, $.sourcemaps.init());
         })
         .pipe(function () {
-            return $.if('*.less', $.less());
-        })
-        .pipe(function () {
             return $.if('*.scss', $.sass({
                 outputStyle: 'nested', // libsass doesn't support expanded yet
                 precision: 10,
@@ -80,6 +77,10 @@ var cssTasks = function (filename) {
                 errLogToConsole: !enabled.failStyleTask
             }));
         })
+        .pipe(function () {
+            return $.if('*.less', $.less());
+        })
+        .pipe($.order, ['**/*'])
         .pipe($.concat, filename)
         .pipe($.autoprefixer, {
             browsers: [

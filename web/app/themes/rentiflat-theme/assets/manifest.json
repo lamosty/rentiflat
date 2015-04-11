@@ -8,8 +8,9 @@
         },
         "main.css": {
             "files": [
-                "styles/main.scss",
-                "styles/main.less"
+                "styles/10_bootstrap.scss",
+                "styles/20_material-design-bootstrap.less",
+                "styles/30_main.scss"
             ],
             "main": true
         },

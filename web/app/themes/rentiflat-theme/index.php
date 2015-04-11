@@ -9,22 +9,17 @@
 ?>
 
 <section id="landing-hero">
+	<div class="jumbotron center">
+		<h1>Helping People With Their Housing Needs</h1>
 
-	<?php get_template_part( 'templates/partials/site-nav.php' ); ?>
+		<p>Web app helping tenants and real estate owners match each other comfortably and
+			inexpensively.</p>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="headline">
-					<h1>Helping People With Their Housing Needs</h1>
-
-					<p>Web app helping tenants and real estate owners match each other comfortably and
-						inexpensively.</p>
-				</div>
-			</div>
-		</div>
+		<p>
+			<a class="btn btn-primary btn-lg">Add new flat</a>
+			<a class="btn btn-primary btn-lg">Find flats</a>
+		</p>
 	</div>
-
 </section>
 
 <section id="features-overview">
@@ -38,36 +33,36 @@
 						sed diam nonumy eirmod tempor invidunt ut labore et dolore
 					</p>
 				</div>
-				<div class="col-md-12">
-					<ul class="main-features">
-						<li>
-							<i class="mdi-action-search" aria-hidden="true"></i>
+			</div>
+			<div class="row main-features">
+				<div class="col-md-4 feature">
+					<i class="mdi-action-search" aria-hidden="true"></i>
 
-							<h3>Feature #1</h3>
+					<h3>Feature #1</h3>
 
-							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-								invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-							</p>
-						</li>
-						<li>
-							<i class="mdi-action-search" aria-hidden="true"></i>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+						invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+					</p>
 
-							<h3>Feature #2</h3>
+				</div>
+				<div class="col-md-4 feature">
+					<i class="mdi-action-search" aria-hidden="true"></i>
 
-							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-								invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-							</p>
-						</li>
-						<li>
-							<i class="mdi-action-search" aria-hidden="true"></i>
+					<h3>Feature #2</h3>
 
-							<h3>Feature #3</h3>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+						invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+					</p>
+				</div>
+				<div class="col-md-4 feature">
+					<i class="mdi-action-search" aria-hidden="true"></i>
 
-							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-								invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-							</p>
-						</li>
-					</ul>
+					<h3>Feature #3</h3>
+
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+						invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+					</p>
+
 				</div>
 			</div>
 		</div>
@@ -76,7 +71,7 @@
 </section>
 
 <section id="features">
-	<article id="feature">
+	<article id="feature" class="bg-silver">
 		<div class="overlay"></div>
 
 		<div class="container">

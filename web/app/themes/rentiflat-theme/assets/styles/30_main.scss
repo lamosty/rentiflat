@@ -2,12 +2,7 @@
  * @ Lamosty.com 2015
  */
 
-@import "common/_variables";
-
-// bower:scss
-@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
-
+@import "common/variables";
 @import "common/_global";
 @import "components/_buttons";
 @import "components/_comments";
