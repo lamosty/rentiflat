@@ -33,5 +33,20 @@ final class Template_Helper {
 		return Theme_Wrapper::$main_template;
 	}
 
+	public static function nav_set_active( $route, $class = 'active' ) {
+		global $wp;
+
+		$request = $wp->request;
+		$route   = trim( $route, '/' );
+
+		if ( $request == $route ||
+		     strpos( $request, $route . '/' ) === 0 // subpage, such as /page/2/
+		) {
+			return $class;
+		}
+
+		return '';
+	}
+
 }
 
