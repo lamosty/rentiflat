@@ -10,7 +10,8 @@
         "modernizr": "2.8.2",
         "jquery": "~2",
         "bootstrap-material-design": "~0.3",
-        "bootstrap-sass-official": "~3.3.4"
+        "bootstrap-sass-official": "~3.3.4",
+        "holderjs": "~2.6.0"
     },
     "overrides": {
         "modernizr": {

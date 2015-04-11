@@ -100,7 +100,7 @@
 					</div>
 				</div>
 				<div class="col-sm-6 col-sm-pull-6 col-md-6 col-md-pull-6">
-					<img class="img-responsive">
+					<img src="holder.js/450x550" class="img-responsive">
 				</div>
 			</div>
 	</article>
@@ -131,7 +131,7 @@
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-6">
-					<img class="img-responsive">
+					<img src="holder.js/450x550" class="img-responsive">
 				</div>
 			</div>
 	</article>
