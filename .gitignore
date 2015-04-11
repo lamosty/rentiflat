@@ -48,3 +48,4 @@ dist
 bower_components
 node_modules
 npm-debug.log
+web/app/debug.log

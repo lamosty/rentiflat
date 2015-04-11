@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3a2259c864b4d88abc80766b0f48f9cb",
+    "hash": "e42b6546d90d4ed35a6a25a26508a5d9",
     "packages": [
         {
             "name": "composer/installers",
@@ -229,16 +229,16 @@
         },
         {
             "name": "lamosty/bedrock-plugin-control",
-            "version": "0.1.1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lamosty/bedrock-plugin-control.git",
-                "reference": "a3e028c3ce0c628837a310ae2abc131d7652c3d9"
+                "reference": "13163fcf367bf69f5d3889f5c50d3469436eae5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lamosty/bedrock-plugin-control/zipball/a3e028c3ce0c628837a310ae2abc131d7652c3d9",
-                "reference": "a3e028c3ce0c628837a310ae2abc131d7652c3d9",
+                "url": "https://api.github.com/repos/lamosty/bedrock-plugin-control/zipball/13163fcf367bf69f5d3889f5c50d3469436eae5a",
+                "reference": "13163fcf367bf69f5d3889f5c50d3469436eae5a",
                 "shasum": ""
             },
             "require": {
@@ -252,7 +252,7 @@
                     "email": "lamos.rasto@gmail.com"
                 }
             ],
-            "time": "2015-03-20 19:14:34"
+            "time": "2015-04-03 16:07:50"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -327,26 +327,6 @@
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/debug-bar-console/",
             "time": "2012-08-07 20:42:00"
-        },
-        {
-            "name": "wpackagist-plugin/options-importer",
-            "version": 5,
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/options-importer/",
-                "reference": "tags/5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/options-importer.5.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/options-importer/"
         },
         {
             "name": "wpackagist-plugin/query-monitor",
