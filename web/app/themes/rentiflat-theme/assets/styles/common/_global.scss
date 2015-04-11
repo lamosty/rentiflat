@@ -1,9 +1,17 @@
 body {
-  background-color: #fff;
+  background-color: $white;
 }
 
 .center {
   text-align: center;
+}
+
+h2 {
+  font-weight: 100;
+  font-size: 36px;
+  color: $gray-800;
+  margin-bottom: 30px;
+  text-transform: uppercase;
 }
 
 .heading {
@@ -19,6 +27,7 @@ body {
     font-size: 21px;
     line-height: 27px;
     margin-bottom: 50px;
+    color: #607d8b;
   }
 
   &.center {
@@ -40,4 +49,12 @@ body {
   background: radial-gradient(ellipse at center, rgba(254,253,254,0.95) 0%,rgba(240,240,240,0.95) 100%);
   border-top: 1px solid #e8e8e8;
   border-bottom: 1px solid #e8e8e8;
+}
+
+p {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 20px;
+  color: $gray;
 }

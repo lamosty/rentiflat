@@ -34,13 +34,73 @@
       margin-bottom: 30px;
     }
 
-    p {
-      font-weight: 300;
-      font-size: 16px;
-      line-height: 24px;
-      margin-bottom: 20px;
-      color: $gray;
+    &:hover {
+      i {
+        background: $primary-color;
+        color: $white;
+      }
+    }
+  }
+}
+
+#features {
+  .feature {
+    padding: 100px 0 80px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .heading {
+      padding-right: 60px;
+
+      &:after {
+        background: $primary-color;
+      }
     }
 
+    .feature-block {
+      position: relative;
+      padding-left: 80px;
+      margin-bottom: 50px;
+      padding-right: 60px;
+
+      i {
+        width: 50px;
+        height: 50px;
+        border: 1px solid $primary-color;
+        display: inline-block;
+        text-align: center;
+        font-size: 24px;
+        padding-top: 12px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: $primary-color;
+        border-radius: 50%;
+        transition: all 0.2s;
+      }
+
+      h3 {
+        font-size: 21px;
+        color: $primary-color;
+        font-weight: 300;
+        margin-top: 0;
+      }
+
+      &:hover {
+        i {
+          background: $primary-color;
+          color: $white;
+        }
+      }
+
+    }
   }
+}
+
+.latest-flats {
+  padding: 100px 0 60px;
+  position: relative;
+  text-align: center;
 }

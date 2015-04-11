@@ -71,7 +71,7 @@
 </section>
 
 <section id="features">
-	<article id="feature" class="bg-silver">
+	<article class="feature bg-silver">
 		<div class="overlay"></div>
 
 		<div class="container">
@@ -104,9 +104,7 @@
 				</div>
 			</div>
 	</article>
-	<article id="feature">
-		<div class="overlay"></div>
-
+	<article class="feature">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-md-6">
@@ -140,7 +138,7 @@
 </section>
 
 <section id="latest-flats">
-	<div class="latest-flats">
+	<div class="latest-flats bg-silver">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
@@ -159,9 +157,9 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 center">
-					<button class="btn btn-primary">
-						Browse all flats
-					</button>
+					<a href="#" class="btn btn-primary btn-flat mdi-action-view-list">
+						Browse flats
+					</a>
 				</div>
 			</div>
 		</div>
