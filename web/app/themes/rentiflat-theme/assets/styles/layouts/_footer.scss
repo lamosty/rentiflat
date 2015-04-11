@@ -1,0 +1,31 @@
+footer {
+  .scroll-top {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    margin-left: -20px;
+    margin-top: -20px;
+    background: $white;
+    border: 1px solid $primary-color;
+    border-radius: 50%;
+    font-size: 18px;
+    color: $primary-color;
+    display: inline-block;
+    text-align: center;
+    padding-top: 6px;
+    transition: all 0.2s;
+
+    &:hover {
+      background: $primary-color;
+      color: $white;
+    }
+  }
+
+  p {
+    border-top: 1px solid #ccc;
+    padding-top: 30px;
+  }
+}
