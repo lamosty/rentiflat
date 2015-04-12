@@ -20,13 +20,15 @@ use Lamosty\RentiFlat\Utils\Template_Helper;
 
 <body <?php body_class(); ?>>
 
-<header id="site-header">
-	<?php get_template_part('templates/partials/site-nav'); ?>
-</header>
+<?php if ( get_post_type() !== Flat::$post_type_id ): ?>
+	<header id="site-header">
+		<?php get_template_part( 'templates/partials/site-nav' ); ?>
+	</header>
+<?php endif; ?>
 
 <?php include Template_Helper::template_path(); ?>
 
-<?php get_template_part('templates/partials/site-footer'); ?>
+<?php get_template_part( 'templates/partials/site-footer' ); ?>
 </body>
 </html>
 

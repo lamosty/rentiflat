@@ -7,6 +7,8 @@ namespace Lamosty\RentiFlat;
 
 class Flat {
 
+	public static $post_type_id = 'flat';
+
 	public function init() {
 		$this->register_flat_post_type();
 	}
@@ -44,7 +46,7 @@ class Flat {
 			'delete_with_user' => true
 		];
 
-		register_post_type( 'flat', $flat_post_type_args );
+		register_post_type( self::$post_type_id, $flat_post_type_args );
 	}
 
 }
