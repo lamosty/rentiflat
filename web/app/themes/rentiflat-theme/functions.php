@@ -15,7 +15,8 @@ function initialize_IOC() {
 			return new RentiFlat();
 		} )
 		->singleton( 'flat', __NAMESPACE__ . '\Flat' )
-		->singleton( 'theme', __NAMESPACE__ . '\Theme' );
+		->singleton( 'theme', __NAMESPACE__ . '\Theme' )
+		->singleton( 'user', __NAMESPACE__ . '\User' );
 
 	return $container;
 }

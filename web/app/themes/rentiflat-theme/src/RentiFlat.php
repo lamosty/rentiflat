@@ -20,19 +20,24 @@ final class RentiFlat {
 	/** @var Flat $flat */
 	public $flat;
 
+	/** @var User $user */
+	public $user;
+
 	/**
 	 * IOC dependencies
 	 */
 	public function needs() {
 		return [
 			'theme',
-			'flat'
+			'flat',
+			'user'
 		];
 	}
 
 	public function init() {
 		$this->theme->init();
 		$this->flat->init();
+		$this->user->init();
 
 		$this->add_wp_actions();
 		$this->add_wp_filters();
