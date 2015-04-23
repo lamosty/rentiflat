@@ -5,15 +5,19 @@
 
 namespace Lamosty\RentiFlat;
 
+use Lamosty\RentiFlat\Utils\Admin_Helper;
+
 class Flat {
 
 	public static $post_type_id = 'rentiflat_flat';
 	public static $bids_meta_box_id = 'rentiflat_bids_meta_box';
 
 	public function init() {
-		$this->add_wp_actions();
-
 		$this->register_flat_post_type();
+
+		$this->add_wp_actions();
+		$this->add_wp_filters();
+
 	}
 
 	private function add_wp_actions() {
@@ -31,6 +35,11 @@ class Flat {
 			);
 
 		} );
+	}
+
+	private function add_wp_filters() {
+		add_filter( 'wp_editor_settings', [ $this, 'modify_wp_editor_settings' ] );
+		add_filter( 'mce_buttons', [ $this, 'modify_tinymce_buttons' ] );
 	}
 
 	private function register_flat_post_type() {
@@ -63,7 +72,7 @@ class Flat {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'thumbnail'),
+			'supports'           => array( 'title', 'editor', 'thumbnail' ),
 			'delete_with_user'   => true
 		];
 
@@ -72,6 +81,42 @@ class Flat {
 
 	public function add_bids_meta_box( $post ) {
 
+	}
+
+	public function modify_tinymce_buttons( $buttons ) {
+		if ( Admin_Helper::is_screen( 'post', self::$post_type_id ) ) {
+			$new_buttons = [
+				'bold',
+				'italic',
+				'bullist',
+				'numlist'
+			];
+
+			return $new_buttons;
+		}
+
+		return $buttons;
+	}
+
+	public function modify_wp_editor_settings( $settings ) {
+		if ( Admin_Helper::is_screen( 'post', self::$post_type_id ) ) {
+			$new_settings = [
+				'textarea_rows' => 8,
+				'tinymce' => [
+					'wp_autoresize_on' => false,
+					'resize' => false,
+					'statusbar' => false
+				],
+				'editor_height' => '',
+				'quicktags' => [
+					'buttons' => 'strong,em,ul,ol,li'
+				]
+			];
+
+			$settings = array_merge($settings, $new_settings);
+		}
+
+		return $settings;
 	}
 
 }
