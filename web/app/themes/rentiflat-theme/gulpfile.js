@@ -7,6 +7,7 @@ var gulp = require('gulp');
 var lazypipe = require('lazypipe');
 var merge = require('merge-stream');
 var runSequence = require('run-sequence');
+var fs = require('fs');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -45,7 +46,11 @@ var enabled = {
     // Disable source maps when `--production`
     maps: !argv.production,
     // Fail styles task on error when `--production`
-    failStyleTask: argv.production
+    failStyleTask: argv.production,
+
+    minifyCSS: argv.production,
+
+    prefixCSS: argv.production
 };
 
 // Path to the compiled assets manifest in the dist directory
@@ -82,13 +87,19 @@ var cssTasks = function (filename) {
         })
         .pipe($.order, ['**/*'])
         .pipe($.concat, filename)
-        .pipe($.autoprefixer, {
-            browsers: [
-                'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4',
-                'opera 12'
-            ]
+        .pipe(function () {
+            return $.if(enabled.prefixCSS,
+                $.autoprefixer({
+                    browsers: [
+                        'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4',
+                        'opera 12'
+                    ]
+                })
+            );
         })
-        .pipe($.minifyCss)
+        .pipe(function () {
+            return $.if(enabled.minifyCSS, $.minifyCss());
+        })
         .pipe(function () {
             return $.if(enabled.rev, $.rev());
         })
@@ -144,7 +155,15 @@ var writeToManifest = function (directory) {
 // raised. If the `--production` flag is set: this task will fail outright.
 gulp.task('styles', ['wiredep'], function () {
     var merged = merge();
+    var cssDeps = [];
+
     manifest.forEachDependency('css', function (dep) {
+        if (!argv.production) {
+            if (dep.name == 'libraries.css' && fs.existsSync('dist/styles/libraries.css')) {
+                return;
+            }
+        }
+
         var cssTasksInstance = cssTasks(dep.name);
         if (!enabled.failStyleTask) {
             cssTasksInstance.on('error', function (err) {
@@ -160,9 +179,9 @@ gulp.task('styles', ['wiredep'], function () {
 });
 
 // ### Scripts
-// `gulp scripts` - Runs JSHint then compiles, combines, and optimizes Bower JS
+// `gulp scripts`
 // and project JS.
-gulp.task('scripts', ['jshint'], function () {
+gulp.task('scripts', function () {
     var merged = merge();
     manifest.forEachDependency('js', function (dep) {
         merged.add(

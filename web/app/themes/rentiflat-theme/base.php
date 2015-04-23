@@ -20,7 +20,7 @@ use Lamosty\RentiFlat\Utils\Template_Helper;
 
 <body <?php body_class(); ?>>
 
-<?php if ( get_post_type() !== Bid::$post_type_id ): ?>
+<?php if ( get_post_type() !== Flat::$post_type_id ): ?>
 	<header id="site-header">
 		<?php get_template_part( 'templates/partials/site-nav' ); ?>
 	</header>

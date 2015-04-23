@@ -6,10 +6,14 @@
             ],
             "main": true
         },
-        "main.css": {
+        "libraries.css": {
             "files": [
                 "styles/10_bootstrap.scss",
-                "styles/20_material-design-bootstrap.less",
+                "styles/20_material-design-bootstrap.less"
+            ]
+        },
+        "main.css": {
+            "files": [
                 "styles/30_main.scss"
             ],
             "main": true
