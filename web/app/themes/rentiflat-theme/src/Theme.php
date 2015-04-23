@@ -58,6 +58,7 @@ final class Theme {
 
 		wp_register_script( 'modernizr', Template_Helper::asset_path( 'scripts/modernizr.js' ), [ ], null, true );
 
+
 		wp_enqueue_script( 'rentiflat-main-js', Template_Helper::asset_path( 'scripts/main.js' ),
 			[
 				'modernizr',
@@ -68,8 +69,11 @@ final class Theme {
 	}
 
 	public function enqueue_styles() {
+		wp_register_style( 'rentiflat-libraries-css', Template_Helper::asset_path( 'styles/libraries.css' ) );
+
+
 		wp_enqueue_style( 'rentiflat-main-css', Template_Helper::asset_path( 'styles/main.css' ),
-			[ ], null );
+			[ 'rentiflat-libraries-css' ], null );
 	}
 
 }
