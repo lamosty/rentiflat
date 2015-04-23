@@ -8,6 +8,7 @@ namespace Lamosty\RentiFlat;
 class Flat {
 
 	public static $post_type_id = 'rentiflat_flat';
+	public static $bids_meta_box_id = 'rentiflat_bids_meta_box';
 
 	public function init() {
 		$this->add_wp_actions();
@@ -16,6 +17,20 @@ class Flat {
 	}
 
 	private function add_wp_actions() {
+
+		// Add bids meta box on flat offer admin edit screen
+		add_action( 'add_meta_boxes_' . self::$post_type_id, function () {
+
+			add_meta_box(
+				self::$bids_meta_box_id,
+				_x( 'Bids', 'bids meta box', RentiFlat::TEXT_DOMAIN ),
+				[ $this, 'add_bids_meta_box' ],
+				null,
+				'advanced',
+				'core'
+			);
+
+		} );
 	}
 
 	private function register_flat_post_type() {
@@ -48,11 +63,15 @@ class Flat {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
+			'supports'           => array( 'title', 'editor', 'thumbnail'),
 			'delete_with_user'   => true
 		];
 
 		register_post_type( self::$post_type_id, $flat_post_type_args );
+	}
+
+	public function add_bids_meta_box( $post ) {
+
 	}
 
 }
