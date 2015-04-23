@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e42b6546d90d4ed35a6a25a26508a5d9",
+    "hash": "498de473708ee6373ddeceb6d3ed85f0",
     "packages": [
         {
             "name": "composer/installers",
@@ -369,6 +369,27 @@
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/rewrite-rules-inspector/",
             "time": "2013-09-24 16:23:25"
+        },
+        {
+            "name": "wpackagist-plugin/user-switching",
+            "version": "dev-trunk",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/user-switching/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/user-switching.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/user-switching/",
+            "time": "2015-04-06 22:10:52"
         }
     ],
     "aliases": [],
@@ -376,7 +397,8 @@
     "stability-flags": {
         "wpackagist-plugin/query-monitor": 20,
         "wpackagist-plugin/debug-bar-console": 20,
-        "wpackagist-plugin/rewrite-rules-inspector": 20
+        "wpackagist-plugin/rewrite-rules-inspector": 20,
+        "wpackagist-plugin/user-switching": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
