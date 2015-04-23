@@ -80,7 +80,15 @@ class Flat {
 	}
 
 	public function add_bids_meta_box( $post ) {
+		$bids_query = new \WP_Query([
+			'post_type' => Bid::$post_type_id,
+			'post_parent' => $post->ID
 
+		]);
+
+		$bids = $bids_query->posts;
+
+		var_dump($bids);
 	}
 
 	public function modify_tinymce_buttons( $buttons ) {
