@@ -7,10 +7,15 @@ namespace Lamosty\RentiFlat;
 
 class Flat {
 
-	public static $post_type_id = 'flat';
+	public static $post_type_id = 'rentiflat_flat';
 
 	public function init() {
+		$this->add_wp_actions();
+
 		$this->register_flat_post_type();
+	}
+
+	private function add_wp_actions() {
 	}
 
 	private function register_flat_post_type() {
@@ -38,12 +43,13 @@ class Flat {
 			'show_in_menu'       => true,
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'flat' ),
-			'capability_type'    => 'post',
+			'capability_type'    => [ 'rentiflat_flat', 'rentiflat_flats' ],
+			'map_meta_cap'       => true,
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
-			'delete_with_user' => true
+			'delete_with_user'   => true
 		];
 
 		register_post_type( self::$post_type_id, $flat_post_type_args );
