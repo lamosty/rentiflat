@@ -10,13 +10,25 @@ class User {
 	private $user_role = 'rentiflat_user';
 
 	private $user_capabilities = [
-		'read',
+
+		// RentiFlat Flat post type
 		'publish_rentiflat_flats',
 		'edit_rentiflat_flats',
 		'edit_published_rentiflat_flats',
 		'delete_rentiflat_flats',
 		'delete_published_rentiflat_flats',
 		'read_private_rentiflat_flats',
+
+		// RentiFlat Bid post type
+		'publish_rentiflat_bids',
+		'edit_rentiflat_bids',
+		'edit_published_rentiflat_bids',
+		'delete_rentiflat_bids',
+		'delete_published_rentiflat_bids',
+		'read_private_rentiflat_bids',
+
+		// common
+		'read',
 		'upload_files'
 	];
 

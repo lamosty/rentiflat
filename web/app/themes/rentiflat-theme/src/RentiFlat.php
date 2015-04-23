@@ -19,6 +19,9 @@ final class RentiFlat {
 	/** @var Flat $flat */
 	public $flat;
 
+	/** @var Bid $bid */
+	public $bid;
+
 	/** @var User $user */
 	public $user;
 
@@ -29,6 +32,7 @@ final class RentiFlat {
 		return [
 			'theme',
 			'flat',
+			'bid',
 			'user'
 		];
 	}
@@ -36,6 +40,7 @@ final class RentiFlat {
 	public function init() {
 		$this->theme->init();
 		$this->flat->init();
+		$this->bid->init();
 		$this->user->init();
 	}
 }
