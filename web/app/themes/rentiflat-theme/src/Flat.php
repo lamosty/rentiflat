@@ -21,7 +21,6 @@ class Flat {
 	}
 
 	private function add_wp_actions() {
-
 		// Add bids meta box on flat offer admin edit screen
 		add_action( 'add_meta_boxes_' . self::$post_type_id, function () {
 

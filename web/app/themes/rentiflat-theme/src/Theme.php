@@ -39,7 +39,8 @@ final class Theme {
 	 * Fired after theme is activated
 	 */
 	public function after_switch_theme() {
-
+		// To add rewrite rules for flats and other pages
+		flush_rewrite_rules();
 	}
 
 	public function setup_theme() {
