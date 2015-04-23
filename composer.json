@@ -38,7 +38,7 @@
         "composer/installers": "1.0.21",
         "dsawardekar/encase-php": "~0.2.0",
         "vlucas/phpdotenv": "1.0.9",
-        "johnpbloch/wordpress": "4.1.1",
+        "johnpbloch/wordpress": "^4.1",
         "lamosty/bedrock-plugin-control": "~1"
     },
     "require-dev": {
