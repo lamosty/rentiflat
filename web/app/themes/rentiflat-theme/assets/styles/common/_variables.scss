@@ -15,6 +15,10 @@ $white: #fff;
 // Text on $primary-color
 $white-gray: rgba(255, 255, 255, 0.84);
 
+// Flat page more features
+$green: #4caf50;
+$red: #f44336;
+
 
 @mixin floatfix {
   &:after {

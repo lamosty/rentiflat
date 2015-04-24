@@ -83,29 +83,38 @@
 
 
 		<div class="description">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet euismod arcu. Curabitur lacus magna,
-			ultrices sed lacus eu, consectetur suscipit purus. Etiam vehicula urna non turpis pretium, ut sagittis urna
-			malesuada. Maecenas pretium lacus urna, at laoreet mi gravida quis. Pellentesque laoreet diam ante, ac
-			convallis libero bibendum a. Fusce aliquam tristique mi sed aliquam. Donec ac molestie urna. Etiam eget
-			pharetra urna. Nam est magna, hendrerit in porta ac, tempor eget arcu. Sed tempor consectetur odio, quis
-			fermentum nibh interdum sit amet.
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet euismod arcu. Curabitur lacus magna,
+				ultrices sed lacus eu, consectetur suscipit purus. Etiam vehicula urna non turpis pretium, ut sagittis urna
+				malesuada. Maecenas pretium lacus urna, at laoreet mi gravida quis. Pellentesque laoreet diam ante, ac
+			</p>
+			<p>
+				convallis libero bibendum a. Fusce aliquam tristique mi sed aliquam. Donec ac molestie urna. Etiam eget
+				pharetra urna. Nam est magna, hendrerit in porta ac, tempor eget arcu. Sed tempor consectetur odio, quis
+				fermentum nibh interdum sit amet.
+			</p>
+			<ul>
+				<li>Point 1</li>
+				<li>Point 2</li>
+				<li>Some other long point</li>
+			</ul>
 		</div>
-		<div class="features row">
-			<div class="feature col-md-2">
-				<span>Elevator</span>
+		<div class="features">
+			<div class="feature">
+				<div class="name">Elevator</div>
 				<i class="mdi-navigation-check"></i>
 			</div>
-			<div class="feature col-md-2">
-				<span>Balcony</span>
+			<div class="feature">
+				<div class="name">Balcony</div>
 				<i class="mdi-navigation-check"></i>
 			</div>
-			<div class="feature col-md-2">
-				<span>Cellar</span>
+			<div class="feature">
+				<div class="name">Cellar</div>
 				<i class="mdi-navigation-close"></i>
 			</div>
-			<div class="feature col-md-2">
-				<span>Floor</span>
-				<span>2.</span>
+			<div class="feature">
+				<div class="name">Floor</div>
+				<span class="floor-num">2.</span>
 			</div>
 		</div>
 	</div>
