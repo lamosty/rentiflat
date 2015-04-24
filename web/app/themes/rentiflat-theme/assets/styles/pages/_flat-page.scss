@@ -65,7 +65,19 @@
   }
 
   .features {
-    padding-top: 20px;
+    padding-top: 30px;
+    padding-left: 20px;
+
+    .feature {
+      @extend .circle-icon-hover;
+      position: relative;
+    }
+
+    .text {
+      margin-left: 45px;
+      font-size: 18px;
+      margin-top: 12px;
+    }
   }
 
   .flat-owner {
@@ -73,6 +85,11 @@
 
     .name {
       padding-top: 15px;
+      font-size: 16px;
+
+      i {
+        font-size: 14px;
+      }
     }
   }
 }

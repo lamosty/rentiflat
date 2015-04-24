@@ -85,14 +85,14 @@
 					</div>
 
 					<div class="feature-block">
-						<i class="mdi-maps-hotel"></i>
+						<i class="circle-icon mdi-maps-hotel"></i>
 
 						<h3>Wordlwide</h3>
 
 						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempo</p>
 					</div>
 					<div class="feature-block">
-						<i class="mdi-social-location-city"></i>
+						<i class="circle-icon mdi-social-location-city"></i>
 
 						<h3>Wordlwide</h3>
 
@@ -116,14 +116,14 @@
 					</div>
 
 					<div class="feature-block">
-						<i class="mdi-maps-hotel"></i>
+						<i class="circle-icon mdi-maps-hotel"></i>
 
 						<h3>Wordlwide</h3>
 
 						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempo</p>
 					</div>
 					<div class="feature-block">
-						<i class="mdi-social-location-city"></i>
+						<i class="circle-icon mdi-social-location-city"></i>
 
 						<h3>Wordlwide</h3>
 

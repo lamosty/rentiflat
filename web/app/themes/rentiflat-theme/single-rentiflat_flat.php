@@ -35,36 +35,42 @@
 					<div class="interval">per month</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="features col-md-12">
-					<div class="feature col-md-3">
-						<i class="mdi-maps-local-hotel"></i>
-						<span>1 room</span>
-					</div>
+			<div class="features row">
+				<div class="feature col-md-3">
+					<i class="circle-icon mdi-maps-local-hotel"></i>
 
-					<div class="feature col-md-3">
-						<i class="mdi-social-people"></i>
-						<span>for 2 persons</span>
-					</div>
+					<div class="text">1 room</div>
+				</div>
 
-					<div class="feature col-md-3">
-						<i class="mdi-image-texture"></i>
-						<span>area 45m</span>
-					</div>
+				<div class="feature col-md-3">
+					<i class="circle-icon mdi-social-people"></i>
 
-					<div class="feature col-md-3">
-						<i class="mdi-social-location-city"></i>
-						<span>new building</span>
-					</div>
+					<div class="text">for 2 persons</div>
+				</div>
+
+				<div class="feature col-md-3">
+					<i class="circle-icon mdi-image-texture"></i>
+
+					<div class="text">area 45m</div>
+				</div>
+
+				<div class="feature col-md-3">
+					<i class="circle-icon mdi-social-location-city"></i>
+
+					<div class="text">new building</div>
 				</div>
 			</div>
 		</div>
 		<div class="flat-owner col-md-2">
 			<div class="picture">
-				<img src="holder.js/120x120" alt="Flat owner picture"/>
+				<img src="holder.js/130x130" alt="Flat owner picture"/>
 			</div>
 			<div class="name">
-				Rastislav Lamos
+				<a href="#" target="_blank">
+					Rastislav Lamos
+					<sup><i class="mdi-action-open-in-new"></i></sup>
+
+				</a>
 			</div>
 		</div>
 
