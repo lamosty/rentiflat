@@ -155,4 +155,67 @@
 
 #bids {
   padding: 60px 0;
+
+  .tenant {
+    float: left;
+    margin-right: 40px;
+    .name {
+      margin-top: 15px;
+      text-align: center;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 30px;
+  }
+
+  .bids-list {
+    h3 {
+      margin-top: 0;
+    }
+  }
+
+  .bid {
+    @include floatfix;
+    margin-top: 30px;
+
+    .picture {
+      float: left;
+    }
+
+    .info {
+      float: left;
+      width: 45%;
+      margin-left: 30px;
+
+      .title {
+        font-weight: bold;
+        color: $gray-800;
+        margin-bottom: 5px;
+        margin-top: 12px;
+      }
+
+    }
+
+    .price-info {
+      float: right;
+      background-color: #3f51b5;
+      width: 120px;
+      padding: 22px;
+      text-align: center;
+      color: #fff;
+      margin-top: 13px;
+    }
+
+    .price {
+      font-size: 20px;
+    }
+
+    .date {
+      padding-top: 10px;
+      font-size: 15px;
+      color: $white-gray;
+    }
+  }
+
 }

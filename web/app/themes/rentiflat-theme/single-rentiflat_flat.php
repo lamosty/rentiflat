@@ -84,10 +84,13 @@
 
 		<div class="description">
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet euismod arcu. Curabitur lacus magna,
-				ultrices sed lacus eu, consectetur suscipit purus. Etiam vehicula urna non turpis pretium, ut sagittis urna
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet euismod arcu. Curabitur lacus
+				magna,
+				ultrices sed lacus eu, consectetur suscipit purus. Etiam vehicula urna non turpis pretium, ut sagittis
+				urna
 				malesuada. Maecenas pretium lacus urna, at laoreet mi gravida quis. Pellentesque laoreet diam ante, ac
 			</p>
+
 			<p>
 				convallis libero bibendum a. Fusce aliquam tristique mi sed aliquam. Donec ac molestie urna. Etiam eget
 				pharetra urna. Nam est magna, hendrerit in porta ac, tempor eget arcu. Sed tempor consectetur odio, quis
@@ -127,9 +130,9 @@
 	<section id="bids" class="row">
 		<div class="bid-form-section col-md-6">
 			<div class="row">
-				<div class="tenant col-md-4">
+				<div class="tenant">
 					<div class="picture">
-						<img src="holder.js/100x100" alt="User tenant picture"/>
+						<img src="holder.js/130x130" alt="User tenant picture"/>
 					</div>
 					<div class="name">
 						Rastislav Lamos
@@ -139,13 +142,24 @@
 					<form id="bid-form" class="form-horizontal" action="#">
 						<fieldset>
 							<div class="form-group">
-								<div class="col-md-12">
-									<input type="text" class="form-control" placeholder="450 E"/>
+								<div class="col-md-6">
+									<div class="input-group form-control-wrapper">
+										<input type="text" class="form-control empty"/>
+
+										<div class="floating-label">Bidding price</div>
+										<span class="material-input"></span>
+										<span class="input-group-addon">$</span>
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-md-12">
-									<input type="email" class="form-control" placeholder="email@gmail.com"/>
+									<div class="form-control-wrapper">
+										<input type="email" class="form-control empty"/>
+
+										<div class="floating-label">Email address</div>
+										<div class="material-input"></div>
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
@@ -162,43 +176,56 @@
 		<div class="bids-list col-md-6">
 			<h3>List of candidates</h3>
 
-			<div class="bid row">
-				<div class="col-md-9">
-					<div class="row">
-						<div class="picture col-md-3">
-							<img src="holder.js/100x100" alt="Candidate picture"/>
-						</div>
-						<div class="info col-md-8">
-							<p>Rastislav Lamos</p>
+			<div class="bid">
+				<div class="picture">
+					<img src="holder.js/130x130" alt="Candidate picture"/>
+				</div>
+				<div class="info">
+					<div class="title">Name</div>
+					<div class="name">
+						Rastislav
+						<span class="label label-info" data-toggle="tooltip" data-placement="top" title="Only flat owners can see the last name.">
+							Hidden
+						</span>
+					</div>
 
-							<p>lamos.rasto@gmail.com</p>
-
-							<p>02/29/2015</p>
-						</div>
+					<div class="title">Email address</div>
+					<div class="email">
+						<span class="label label-info" data-toggle="tooltip" data-placement="top" title="Only flat owners can see the email address.">
+							Hidden
+						</span>
 					</div>
 				</div>
-				<div class="price col-md-3">
-					460 E
+				<div class="price-info">
+					<div class="price">
+						460
+						<span class="currency">&euro;</span>
+					</div>
+					<div class="date">02/29/2015</div>
 				</div>
 			</div>
 
-			<div class="bid row">
-				<div class="col-md-9">
-					<div class="row">
-						<div class="picture col-md-3">
-							<img src="holder.js/100x100" alt="Candidate picture"/>
-						</div>
-						<div class="info col-md-8">
-							<p>Rastislav Lamos</p>
+			<div class="bid">
+				<div class="picture">
+					<img src="holder.js/130x130" alt="Candidate picture"/>
+				</div>
+				<div class="info">
+					<div class="title">Name</div>
+					<div class="name">
+						Rastislav Lamos
+					</div>
 
-							<p>lamos.rasto@gmail.com</p>
-
-							<p>02/29/2015</p>
-						</div>
+					<div class="title">Email address</div>
+					<div class="email">
+						lamos.rasto@gmail.com
 					</div>
 				</div>
-				<div class="price col-md-3">
-					460 E
+				<div class="price-info">
+					<div class="price">
+						1500
+						<span class="currency">&euro;</span>
+					</div>
+					<div class="date">02/29/2015</div>
 				</div>
 			</div>
 		</div>

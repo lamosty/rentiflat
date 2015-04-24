@@ -8,6 +8,8 @@
         'common': {
             init: function () {
                 $.material.init();
+
+                $('[data-toggle="tooltip"]').tooltip();
             },
             finalize: function () {
             }
