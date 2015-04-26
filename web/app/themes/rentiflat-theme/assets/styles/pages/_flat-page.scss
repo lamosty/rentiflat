@@ -17,12 +17,17 @@
     width: 120px;
     margin-left: 5px;
 
-    img {
+    a {
       margin-bottom: 15px;
+      display: block;
 
       &:last-child {
         margin-bottom: 0;
       }
+    }
+
+    img {
+
     }
 
     &:after {

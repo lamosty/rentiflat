@@ -19,7 +19,7 @@ if ( have_posts() ) :
 		foreach ( $flat_photos as $photo_id => $photo_object ) {
 			$photos[ $photo_id ] = [
 				'thumbnail' => wp_get_attachment_image_src( $photo_id, Theme::FLAT_THUMBNAIL_SIZE )[0],
-				'large'  => wp_get_attachment_image_src( $photo_id, 'post-thumbnail' )[0]
+				'large'     => wp_get_attachment_image_src( $photo_id, 'post-thumbnail' )[0]
 			];
 		}
 
@@ -29,18 +29,18 @@ if ( have_posts() ) :
 			<section id="flat-photos">
 				<div class="main-photo">
 					<img class="img-responsive" src="<?= $photos[ $featured_photo_id ]['large']; ?>"
-					     alt="Flat photo"/>
+					     alt="Flat photo" id="large-photo"/>
 				</div>
 				<div class="other-photos">
 					<?php
 
-					foreach($photos as $photo_id => $photo) {
+					foreach ( $photos as $photo_id => $photo ) {
 						?>
+						<a href="#" data-photo-large="<?= $photo['large']; ?>">
+							<img class="img-responsive" src="<?= $photo['thumbnail']; ?>" alt="Flat photo"/>
+						</a>
 
-						<img class="img-responsive" src="<?= $photo['thumbnail']; ?>" alt="Flat photo"
-							data-photo-large="<?= $photo['large']; ?>"/>
-
-						<?php
+					<?php
 					}
 
 					?>
