@@ -48,5 +48,15 @@ final class Template_Helper {
 		return '';
 	}
 
+	public static function flat_has_feature( $flat_id, $feature_name ) {
+		$feature = get_post_meta($flat_id, $feature_name, true);
+
+		if ($feature == '1') {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
 

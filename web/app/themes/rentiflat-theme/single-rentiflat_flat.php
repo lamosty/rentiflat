@@ -4,11 +4,15 @@
  */
 
 use Lamosty\RentiFlat\Theme;
+use Lamosty\RentiFlat\Flat;
+use Lamosty\RentiFlat\Utils\Template_Helper as TH;
 
 // Set some global variables for the current flat page
 if ( have_posts() ) :
 	while ( have_posts() ) :
 		the_post();
+
+		$post_id = get_the_ID();
 
 		$flat_photos = get_attached_media( 'image' );
 
@@ -51,13 +55,13 @@ if ( have_posts() ) :
 				<div class="col-md-10">
 					<div class="row">
 						<div class="title col-md-10">
-							<h1 class="name">1 izbový byt v centre Starého mesta</h1>
+							<h1 class="name"><?= get_the_title(); ?></h1>
 
-							<div class="address">Dunajská 45, 90028 Bratislava</div>
+							<div class="address">Bratislava, Slovakia</div>
 						</div>
 						<div class="price-info">
 							<div class="price">
-								450
+								<?= get_post_meta( $post_id, 'price_per_month', true ); ?>
 								<span class="currency">&euro;</span>
 							</div>
 							<div class="interval">per month</div>
@@ -73,20 +77,35 @@ if ( have_posts() ) :
 						<div class="feature col-md-3">
 							<i class="circle-icon mdi-social-people"></i>
 
-							<div class="text">for 2 persons</div>
+							<div class="text">
+								<?php $num_of_persons = (int) get_post_meta( $post_id, 'num_of_persons', true ); ?>
+
+								for
+								<?= sprintf( _n( '1 person', '%s persons', $num_of_persons ), $num_of_persons ); ?>
+							</div>
 						</div>
 
 						<div class="feature col-md-3">
 							<i class="circle-icon mdi-image-texture"></i>
 
-							<div class="text">area 45m</div>
+							<div class="text">
+								area
+								<?= get_post_meta( $post_id, 'area_m_squared', true ); ?>
+								m<sup>2</sup>
+							</div>
 						</div>
 
-						<div class="feature col-md-3">
-							<i class="circle-icon mdi-social-location-city"></i>
+						<?php
+						$new_building = get_post_meta( $post_id, 'new_building', true );
 
-							<div class="text">new building</div>
-						</div>
+						if ( $new_building == '1' ) :
+							?>
+							<div class="feature col-md-3">
+								<i class="circle-icon mdi-social-location-city"></i>
+
+								<div class="text">new building</div>
+							</div>
+						<?php endif; ?>
 					</div>
 				</div>
 				<div class="flat-owner col-md-2">
@@ -111,46 +130,32 @@ if ( have_posts() ) :
 
 
 				<div class="description">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet euismod arcu. Curabitur
-						lacus
-						magna,
-						ultrices sed lacus eu, consectetur suscipit purus. Etiam vehicula urna non turpis pretium, ut
-						sagittis
-						urna
-						malesuada. Maecenas pretium lacus urna, at laoreet mi gravida quis. Pellentesque laoreet diam
-						ante, ac
-					</p>
-
-					<p>
-						convallis libero bibendum a. Fusce aliquam tristique mi sed aliquam. Donec ac molestie urna.
-						Etiam eget
-						pharetra urna. Nam est magna, hendrerit in porta ac, tempor eget arcu. Sed tempor consectetur
-						odio, quis
-						fermentum nibh interdum sit amet.
-					</p>
-					<ul>
-						<li>Point 1</li>
-						<li>Point 2</li>
-						<li>Some other long point</li>
-					</ul>
+					<?php the_content(); ?>
 				</div>
 				<div class="features">
 					<div class="feature">
 						<div class="name">Elevator</div>
-						<i class="mdi-navigation-check"></i>
+						<i class=
+						   "mdi-navigation-<?= TH::flat_has_feature( $post_id, 'elevator' ) ? 'check' : 'close'; ?>">
+						</i>
 					</div>
 					<div class="feature">
 						<div class="name">Balcony</div>
-						<i class="mdi-navigation-check"></i>
+						<i class=
+						   "mdi-navigation-<?= TH::flat_has_feature( $post_id, 'balcony' ) ? 'check' : 'close'; ?>">
+						</i>
 					</div>
 					<div class="feature">
 						<div class="name">Cellar</div>
-						<i class="mdi-navigation-close"></i>
+						<i class=
+						   "mdi-navigation-<?= TH::flat_has_feature( $post_id, 'cellar' ) ? 'check' : 'close'; ?>">
+						</i>
 					</div>
 					<div class="feature">
 						<div class="name">Floor</div>
-						<span class="floor-num">2.</span>
+						<span class="floor-num">
+							<?= get_post_meta($post_id, 'floor_num', true); ?>.
+						</span>
 					</div>
 				</div>
 			</div>
