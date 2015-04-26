@@ -5,22 +5,20 @@
 #flat-photos {
   @include floatfix;
 
-  max-width: 935px;
-  margin: 0 auto;
+  text-align: center;
 
   .main-photo {
     padding-right: 0;
-    float: left;
+    display: inline-block;
   }
 
   .other-photos {
-    float: left;
+    display: inline-block;
     width: 120px;
     margin-left: 5px;
 
     img {
       margin-bottom: 15px;
-      float: right;
 
       &:last-child {
         margin-bottom: 0;
