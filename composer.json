@@ -45,7 +45,8 @@
         "wpackagist-plugin/query-monitor": "dev-trunk",
         "wpackagist-plugin/debug-bar-console": "dev-trunk",
         "wpackagist-plugin/rewrite-rules-inspector": "dev-trunk",
-        "wpackagist-plugin/user-switching": "dev-trunk"
+        "wpackagist-plugin/user-switching": "dev-trunk",
+        "wpackagist-plugin/regenerate-thumbnails": "dev-trunk"
 
     },
     "extra": {
