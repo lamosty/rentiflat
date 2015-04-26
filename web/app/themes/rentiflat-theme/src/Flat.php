@@ -26,20 +26,6 @@ class Flat {
 	private function add_wp_actions() {
 		add_action( 'init', [ $this, '_wp_init' ] );
 		add_action( 'after_switch_theme', [ $this, 'insert_terms' ] );
-
-		// Add bids meta box on flat offer admin edit screen
-		add_action( 'add_meta_boxes_' . self::$post_type_id, function () {
-
-			add_meta_box(
-				self::$bids_meta_box_id,
-				_x( 'Bids', 'bids meta box', RentiFlat::TEXT_DOMAIN ),
-				[ $this, 'add_bids_meta_box' ],
-				null,
-				'advanced',
-				'core'
-			);
-
-		} );
 	}
 
 	private function add_wp_filters() {
@@ -51,6 +37,8 @@ class Flat {
 		$this->register_flat_post_type();
 		$this->register_flat_types_taxonomy();
 		$this->register_location_taxonomies();
+
+
 	}
 
 	public function insert_terms() {
@@ -126,9 +114,13 @@ class Flat {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => [ 'title', 'editor', 'thumbnail' ],
+			'supports'           => [ 'title', 'editor', 'thumbnail', 'custom-fields' ],
 			'delete_with_user'   => true,
-			'taxonomies'         => [ self::$flat_types_taxonomy_id, self::$country_taxonomy_id, self::$city_taxonomy_id ]
+			'taxonomies'         => [
+				self::$flat_types_taxonomy_id,
+				self::$country_taxonomy_id,
+				self::$city_taxonomy_id
+			]
 		];
 
 		register_post_type( self::$post_type_id, $flat_post_type_args );
@@ -136,13 +128,13 @@ class Flat {
 
 	private function register_flat_types_taxonomy() {
 		$labels = [
-			'name'          => _x( 'Type', 'taxonomy general name' ),
-			'search_items'  => __( 'Filter by flat types' ),
-			'all_items'     => __( 'All flat types' ),
-			'edit_item'     => __( 'Edit flat type' ),
-			'update_item'   => __( 'Update flat type' ),
-			'add_new_item'  => __( 'Add new flat type' ),
-			'menu_name'     => __( 'Types' )
+			'name'         => _x( 'Type', 'taxonomy general name' ),
+			'search_items' => __( 'Filter by flat types' ),
+			'all_items'    => __( 'All flat types' ),
+			'edit_item'    => __( 'Edit flat type' ),
+			'update_item'  => __( 'Update flat type' ),
+			'add_new_item' => __( 'Add new flat type' ),
+			'menu_name'    => __( 'Types' )
 		];
 
 		$args = [
@@ -161,8 +153,8 @@ class Flat {
 		// Country
 		register_taxonomy( self::$country_taxonomy_id, self::$post_type_id, [
 			'labels'            => [
-				'name'          => _x( 'Country', 'taxonomy general name' ),
-				'menu_name'     => __( 'Countries' )
+				'name'      => _x( 'Country', 'taxonomy general name' ),
+				'menu_name' => __( 'Countries' )
 			],
 			'query_var'         => false,
 			'show_ui'           => true,
@@ -173,26 +165,14 @@ class Flat {
 		// City
 		register_taxonomy( self::$city_taxonomy_id, self::$post_type_id, [
 			'labels'            => [
-				'name'          => _x( 'City', 'taxonomy general name' ),
-				'menu_name'     => __( 'Cities' )
+				'name'      => _x( 'City', 'taxonomy general name' ),
+				'menu_name' => __( 'Cities' )
 			],
 			'query_var'         => false,
 			'show_ui'           => true,
 			'show_in_menu'      => false,
 			'show_admin_column' => true
 		] );
-	}
-
-	public function add_bids_meta_box( $post ) {
-		$bids_query = new \WP_Query( [
-			'post_type'   => Bid::$post_type_id,
-			'post_parent' => $post->ID
-
-		] );
-
-		$bids = $bids_query->posts;
-
-		var_dump( $bids );
 	}
 
 	public function modify_tinymce_buttons( $buttons ) {
