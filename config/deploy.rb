@@ -1,4 +1,4 @@
-set :application, 'lamosty.com'
+set :application, 'rentiflat'
 set :repo_url, 'git@github.com:lamosty/rentiflat.git'
 
 set :stages, %w(production staging)
