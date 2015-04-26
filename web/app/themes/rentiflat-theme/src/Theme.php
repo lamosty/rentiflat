@@ -15,6 +15,8 @@ final class Theme {
 	 */
 	const THEME_NAME = 'rentiflat';
 
+	const FLAT_THUMBNAIL_SIZE = 'rentiflat_flat_thumbnail';
+
 	private $theme_options = [ ];
 
 	public function init() {
@@ -52,7 +54,7 @@ final class Theme {
 		set_post_thumbnail_size(690, 460);
 
 		// Thumbnail photo
-		add_image_size('rentiflat_flat_thumbnail', 128, 80);
+		add_image_size(self::FLAT_THUMBNAIL_SIZE, 128, 80);
 	}
 
 	private function setup_theme() {
