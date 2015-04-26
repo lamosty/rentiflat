@@ -10,7 +10,7 @@ use Lamosty\RentiFlat\Utils\Admin_Helper;
 class Flat {
 
 	public static $post_type_id = 'rentiflat_flat';
-	public static $bedrooms_taxonomy_id = 'rentiflat_bedrooms';
+	public static $flat_types_taxonomy_id = 'rentiflat_flat_types';
 
 	public static $bids_meta_box_id = 'rentiflat_bids_meta_box';
 
@@ -22,7 +22,8 @@ class Flat {
 	}
 
 	private function add_wp_actions() {
-		add_action( 'init', [ $this, 'wp_init' ] );
+		add_action( 'init', [ $this, '_wp_init' ] );
+		add_action( 'after_switch_theme', [ $this, 'insert_terms' ] );
 
 		// Add bids meta box on flat offer admin edit screen
 		add_action( 'add_meta_boxes_' . self::$post_type_id, function () {
@@ -44,9 +45,52 @@ class Flat {
 		add_filter( 'mce_buttons', [ $this, 'modify_tinymce_buttons' ] );
 	}
 
-	public function wp_init() {
+	public function _wp_init() {
 		$this->register_flat_post_type();
-		$this->register_bedrooms_taxonomy();
+		$this->register_flat_types_taxonomy();
+	}
+
+	public function insert_terms() {
+		$flat_type_terms = [
+			[
+				'title'    => 'Studio',
+				'taxonomy' => self::$flat_types_taxonomy_id,
+				'slug'     => 'studio'
+			],
+			[
+				'title'    => '1 room',
+				'taxonomy' => self::$flat_types_taxonomy_id,
+				'slug'     => '1-room'
+			],
+			[
+				'title'    => '2 rooms',
+				'taxonomy' => self::$flat_types_taxonomy_id,
+				'slug'     => '2-rooms'
+			],
+			[
+				'title'    => '3 rooms',
+				'taxonomy' => self::$flat_types_taxonomy_id,
+				'slug'     => '3-rooms'
+			],
+			[
+				'title'    => '4 rooms',
+				'taxonomy' => self::$flat_types_taxonomy_id,
+				'slug'     => '4-rooms'
+			]
+		];
+
+		$terms = $flat_type_terms;
+
+		foreach ( $terms as $term ) {
+			wp_insert_term(
+				$term['title'],
+				$term['taxonomy'],
+				[
+					'slug' => $term['slug']
+				]
+			);
+		}
+
 	}
 
 	private function register_flat_post_type() {
@@ -81,22 +125,22 @@ class Flat {
 			'menu_position'      => null,
 			'supports'           => [ 'title', 'editor', 'thumbnail' ],
 			'delete_with_user'   => true,
-			'taxonomies'         => [ self::$bedrooms_taxonomy_id ]
+			'taxonomies'         => [ self::$flat_types_taxonomy_id ]
 		];
 
 		register_post_type( self::$post_type_id, $flat_post_type_args );
 	}
 
-	private function register_bedrooms_taxonomy() {
+	private function register_flat_types_taxonomy() {
 		$labels = [
-			'name'          => _x( 'Bedrooms', 'taxonomy general name' ),
-			'singular_name' => _x( 'Bedroom', 'taxonomy singular name' ),
-			'search_items'  => __( 'Filter by number of bedrooms' ),
-			'all_items'     => __( 'Any number of bedrooms' ),
-			'edit_item'     => __( 'Edit bedrooms' ),
-			'update_item'   => __( 'Update bedrooms' ),
-			'add_new_item'  => __( 'Add new number of bedrooms' ),
-			'menu_name'     => __( 'Bedrooms' ),
+			'name'          => _x( 'Flat types', 'taxonomy general name' ),
+			'singular_name' => _x( 'Flat type', 'taxonomy singular name' ),
+			'search_items'  => __( 'Filter by flat types' ),
+			'all_items'     => __( 'All flat types' ),
+			'edit_item'     => __( 'Edit flat type' ),
+			'update_item'   => __( 'Update flat type' ),
+			'add_new_item'  => __( 'Add new flat type' ),
+			'menu_name'     => __( 'Types' )
 		];
 
 		$args = [
@@ -108,7 +152,7 @@ class Flat {
 			'rewrite'           => array( 'slug' => 'bedrooms' ),
 		];
 
-		register_taxonomy( self::$bedrooms_taxonomy_id, self::$post_type_id, $args );
+		register_taxonomy( self::$flat_types_taxonomy_id, self::$post_type_id, $args );
 	}
 
 	public function add_bids_meta_box( $post ) {
