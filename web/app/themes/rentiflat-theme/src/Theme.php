@@ -13,7 +13,7 @@ final class Theme {
 	 *
 	 * @const NAME
 	 */
-	const NAME = 'rentiflat';
+	const THEME_NAME = 'rentiflat';
 
 	private $theme_options = [ ];
 
@@ -24,10 +24,14 @@ final class Theme {
 
 	private function add_wp_actions() {
 		add_action( 'after_switch_theme', [ $this, 'after_switch_theme' ] );
-		add_action( 'after_setup_theme', [ $this, 'setup_theme' ] );
+		add_action( 'after_setup_theme', [ $this, '_wp_after_setup_theme' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+	}
 
+	public function _wp_after_setup_theme() {
+		$this->setup_theme();
+		$this->add_flat_photos_sizes();
 	}
 
 	private function add_wp_filters() {
@@ -43,7 +47,15 @@ final class Theme {
 		flush_rewrite_rules();
 	}
 
-	public function setup_theme() {
+	private function add_flat_photos_sizes() {
+		// Flat featured photo (the large one on flat page)
+		set_post_thumbnail_size(690, 460);
+
+		// Thumbnail photo
+		add_image_size('rentiflat_flat_thumbnail', 128, 80);
+	}
+
+	private function setup_theme() {
 		register_nav_menus( [
 			'primary_navigation' => __( 'Primary Navigation', RentiFlat::TEXT_DOMAIN )
 		] );
