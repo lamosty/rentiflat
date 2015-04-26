@@ -11,8 +11,10 @@ class Flat {
 
 	public static $post_type_id = 'rentiflat_flat';
 	public static $flat_types_taxonomy_id = 'rentiflat_flat_types';
-
 	public static $bids_meta_box_id = 'rentiflat_bids_meta_box';
+
+	public static $country_taxonomy_id = 'rentiflat_country';
+	public static $city_taxonomy_id = 'rentiflat_city';
 
 
 	public function init() {
@@ -48,6 +50,7 @@ class Flat {
 	public function _wp_init() {
 		$this->register_flat_post_type();
 		$this->register_flat_types_taxonomy();
+		$this->register_location_taxonomies();
 	}
 
 	public function insert_terms() {
@@ -125,7 +128,7 @@ class Flat {
 			'menu_position'      => null,
 			'supports'           => [ 'title', 'editor', 'thumbnail' ],
 			'delete_with_user'   => true,
-			'taxonomies'         => [ self::$flat_types_taxonomy_id ]
+			'taxonomies'         => [ self::$flat_types_taxonomy_id, self::$country_taxonomy_id, self::$city_taxonomy_id ]
 		];
 
 		register_post_type( self::$post_type_id, $flat_post_type_args );
@@ -133,8 +136,7 @@ class Flat {
 
 	private function register_flat_types_taxonomy() {
 		$labels = [
-			'name'          => _x( 'Flat types', 'taxonomy general name' ),
-			'singular_name' => _x( 'Flat type', 'taxonomy singular name' ),
+			'name'          => _x( 'Type', 'taxonomy general name' ),
 			'search_items'  => __( 'Filter by flat types' ),
 			'all_items'     => __( 'All flat types' ),
 			'edit_item'     => __( 'Edit flat type' ),
@@ -153,6 +155,32 @@ class Flat {
 		];
 
 		register_taxonomy( self::$flat_types_taxonomy_id, self::$post_type_id, $args );
+	}
+
+	private function register_location_taxonomies() {
+		// Country
+		register_taxonomy( self::$country_taxonomy_id, self::$post_type_id, [
+			'labels'            => [
+				'name'          => _x( 'Country', 'taxonomy general name' ),
+				'menu_name'     => __( 'Countries' )
+			],
+			'query_var'         => false,
+			'show_ui'           => true,
+			'show_in_menu'      => false,
+			'show_admin_column' => true
+		] );
+
+		// City
+		register_taxonomy( self::$city_taxonomy_id, self::$post_type_id, [
+			'labels'            => [
+				'name'          => _x( 'City', 'taxonomy general name' ),
+				'menu_name'     => __( 'Cities' )
+			],
+			'query_var'         => false,
+			'show_ui'           => true,
+			'show_in_menu'      => false,
+			'show_admin_column' => true
+		] );
 	}
 
 	public function add_bids_meta_box( $post ) {
