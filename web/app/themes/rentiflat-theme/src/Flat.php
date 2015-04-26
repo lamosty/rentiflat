@@ -26,6 +26,7 @@ class Flat {
 	private function add_wp_actions() {
 		add_action( 'init', [ $this, '_wp_init' ] );
 		add_action( 'after_switch_theme', [ $this, 'insert_terms' ] );
+		add_action( 'add_meta_boxes_' . self::$post_type_id, [ $this, 'add_flat_meta_data' ] );
 	}
 
 	private function add_wp_filters() {
@@ -82,6 +83,23 @@ class Flat {
 			);
 		}
 
+	}
+
+	public function add_flat_meta_data( \WP_Post $flat ) {
+		$flat_meta_data = [
+			'num_of_persons',
+			'area_m_squared',
+			'new_building',
+			'price_per_month',
+			'elevator',
+			'balcony',
+			'cellar',
+			'floor_num'
+		];
+
+		foreach ( $flat_meta_data as $meta ) {
+			add_post_meta( $flat->ID, $meta, '', true );
+		}
 	}
 
 	private function register_flat_post_type() {
