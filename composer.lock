@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "283911668b80532947c1acebc87b232e",
+    "hash": "6d67fc03b575df58f13d9e840919634e",
     "packages": [
         {
             "name": "composer/installers",
@@ -147,16 +147,16 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.1.2",
+            "version": "4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "51483bcc2f2aadc3bb1f0df20060cdc00dda576e"
+                "reference": "4c247a5f81af6207a99ecda3ce3b895a9f6af84e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/51483bcc2f2aadc3bb1f0df20060cdc00dda576e",
-                "reference": "51483bcc2f2aadc3bb1f0df20060cdc00dda576e",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/4c247a5f81af6207a99ecda3ce3b895a9f6af84e",
+                "reference": "4c247a5f81af6207a99ecda3ce3b895a9f6af84e",
                 "shasum": ""
             },
             "require": {
@@ -180,7 +180,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2015-04-21 14:31:05"
+            "time": "2015-04-23 16:31:07"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -350,6 +350,27 @@
             "time": "2015-03-14 21:07:32"
         },
         {
+            "name": "wpackagist-plugin/regenerate-thumbnails",
+            "version": "dev-trunk",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/regenerate-thumbnails/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/regenerate-thumbnails/",
+            "time": "2015-04-23 22:02:14"
+        },
+        {
             "name": "wpackagist-plugin/rewrite-rules-inspector",
             "version": "dev-trunk",
             "source": {
@@ -398,7 +419,8 @@
         "wpackagist-plugin/query-monitor": 20,
         "wpackagist-plugin/debug-bar-console": 20,
         "wpackagist-plugin/rewrite-rules-inspector": 20,
-        "wpackagist-plugin/user-switching": 20
+        "wpackagist-plugin/user-switching": 20,
+        "wpackagist-plugin/regenerate-thumbnails": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

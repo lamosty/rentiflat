@@ -74,5 +74,6 @@ $BEDROCK_DEV_PLUGINS = array(
 	'query-monitor/query-monitor.php',
 	'debug-bar-console/debug-bar-console.php',
 	'rewrite-rules-inspector/rewrite-rules-inspector.php',
-	'user-switching/user-switching.php'
+	'user-switching/user-switching.php',
+	'regenerate-thumbnails/regenerate-thumbnails.php'
 );

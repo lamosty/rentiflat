@@ -4,6 +4,14 @@
 
 (function ($) {
 
+    function swap_large_image(event) {
+        event.preventDefault();
+
+        var newLargePhotoSrc = $(this).data('photo-large');
+
+        $('#large-photo').attr('src', newLargePhotoSrc);
+    }
+
     var RentiFlat = {
         'common': {
             init: function () {
@@ -12,6 +20,11 @@
                 $('[data-toggle="tooltip"]').tooltip();
             },
             finalize: function () {
+            }
+        },
+        'single_rentiflat_flat': {
+            init: function () {
+                $('#flat-photos').find('[data-photo-large]').on('click', swap_large_image);
             }
         }
     };

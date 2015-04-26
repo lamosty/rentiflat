@@ -26,8 +26,7 @@ function initialize_IOC() {
 function initialize_app( Container $container ) {
 	/** @var RentiFlat $rentiflat */
 	$rentiflat = $container->lookup( 'RentiFlat' );
-
-	add_action( 'init', [ $rentiflat, 'init' ] );
+	$rentiflat->init();
 }
 
 $container = initialize_IOC();
