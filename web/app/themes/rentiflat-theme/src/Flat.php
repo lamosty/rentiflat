@@ -13,14 +13,16 @@ class Flat {
 	public static $bids_meta_box_id = 'rentiflat_bids_meta_box';
 
 	public function init() {
-		$this->register_flat_post_type();
-
 		$this->add_wp_actions();
 		$this->add_wp_filters();
 
 	}
 
 	private function add_wp_actions() {
+		add_action( 'init', [ $this, 'register_flat_post_type' ] );
+		add_action( 'init', [ $this, 'register_num_of_rooms_taxonomy' ] );
+
+
 		// Add bids meta box on flat offer admin edit screen
 		add_action( 'add_meta_boxes_' . self::$post_type_id, function () {
 
@@ -41,7 +43,7 @@ class Flat {
 		add_filter( 'mce_buttons', [ $this, 'modify_tinymce_buttons' ] );
 	}
 
-	private function register_flat_post_type() {
+	public function register_flat_post_type() {
 		$labels = [
 			'name'               => _x( 'Flats', 'post type general name', RentiFlat::TEXT_DOMAIN ),
 			'singular_name'      => _x( 'Flat', 'post type singular name', RentiFlat::TEXT_DOMAIN ),
@@ -78,16 +80,20 @@ class Flat {
 		register_post_type( self::$post_type_id, $flat_post_type_args );
 	}
 
+	public function register_num_of_rooms_taxonomy() {
+
+	}
+
 	public function add_bids_meta_box( $post ) {
-		$bids_query = new \WP_Query([
-			'post_type' => Bid::$post_type_id,
+		$bids_query = new \WP_Query( [
+			'post_type'   => Bid::$post_type_id,
 			'post_parent' => $post->ID
 
-		]);
+		] );
 
 		$bids = $bids_query->posts;
 
-		var_dump($bids);
+		var_dump( $bids );
 	}
 
 	public function modify_tinymce_buttons( $buttons ) {
@@ -109,18 +115,18 @@ class Flat {
 		if ( Admin_Helper::is_screen( 'post', self::$post_type_id ) ) {
 			$new_settings = [
 				'textarea_rows' => 8,
-				'tinymce' => [
+				'tinymce'       => [
 					'wp_autoresize_on' => false,
-					'resize' => false,
-					'statusbar' => false
+					'resize'           => false,
+					'statusbar'        => false
 				],
 				'editor_height' => '',
-				'quicktags' => [
+				'quicktags'     => [
 					'buttons' => 'strong,em,ul,ol,li'
 				]
 			];
 
-			$settings = array_merge($settings, $new_settings);
+			$settings = array_merge( $settings, $new_settings );
 		}
 
 		return $settings;

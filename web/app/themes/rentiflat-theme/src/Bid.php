@@ -16,9 +16,10 @@ class Bid {
 	}
 
 	private function add_wp_actions() {
+		add_action( 'init', [ $this, 'register_bid_post_type' ] );
 	}
 
-	private function register_bid_post_type() {
+	public function register_bid_post_type() {
 		$labels = [
 			'name'               => _x( 'Bids', 'rentiflat bid general name', RentiFlat::TEXT_DOMAIN ),
 			'singular_name'      => _x( 'Bid', 'rentiflat bid singular name', RentiFlat::TEXT_DOMAIN ),
