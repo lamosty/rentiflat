@@ -10,7 +10,10 @@ use Lamosty\RentiFlat\Utils\Admin_Helper;
 class Flat {
 
 	public static $post_type_id = 'rentiflat_flat';
+	public static $bedrooms_taxonomy_id = 'rentiflat_bedrooms';
+
 	public static $bids_meta_box_id = 'rentiflat_bids_meta_box';
+
 
 	public function init() {
 		$this->add_wp_actions();
@@ -19,9 +22,7 @@ class Flat {
 	}
 
 	private function add_wp_actions() {
-		add_action( 'init', [ $this, 'register_flat_post_type' ] );
-		add_action( 'init', [ $this, 'register_num_of_rooms_taxonomy' ] );
-
+		add_action( 'init', [ $this, 'wp_init' ] );
 
 		// Add bids meta box on flat offer admin edit screen
 		add_action( 'add_meta_boxes_' . self::$post_type_id, function () {
@@ -43,7 +44,12 @@ class Flat {
 		add_filter( 'mce_buttons', [ $this, 'modify_tinymce_buttons' ] );
 	}
 
-	public function register_flat_post_type() {
+	public function wp_init() {
+		$this->register_flat_post_type();
+		$this->register_bedrooms_taxonomy();
+	}
+
+	private function register_flat_post_type() {
 		$labels = [
 			'name'               => _x( 'Flats', 'post type general name', RentiFlat::TEXT_DOMAIN ),
 			'singular_name'      => _x( 'Flat', 'post type singular name', RentiFlat::TEXT_DOMAIN ),
@@ -67,21 +73,42 @@ class Flat {
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'flat' ),
+			'rewrite'            => [ 'slug' => 'flat' ],
 			'capability_type'    => [ 'rentiflat_flat', 'rentiflat_flats' ],
 			'map_meta_cap'       => true,
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'thumbnail' ),
-			'delete_with_user'   => true
+			'supports'           => [ 'title', 'editor', 'thumbnail' ],
+			'delete_with_user'   => true,
+			'taxonomies'         => [ self::$bedrooms_taxonomy_id ]
 		];
 
 		register_post_type( self::$post_type_id, $flat_post_type_args );
 	}
 
-	public function register_num_of_rooms_taxonomy() {
+	private function register_bedrooms_taxonomy() {
+		$labels = [
+			'name'          => _x( 'Bedrooms', 'taxonomy general name' ),
+			'singular_name' => _x( 'Bedroom', 'taxonomy singular name' ),
+			'search_items'  => __( 'Filter by number of bedrooms' ),
+			'all_items'     => __( 'Any number of bedrooms' ),
+			'edit_item'     => __( 'Edit bedrooms' ),
+			'update_item'   => __( 'Update bedrooms' ),
+			'add_new_item'  => __( 'Add new number of bedrooms' ),
+			'menu_name'     => __( 'Bedrooms' ),
+		];
 
+		$args = [
+			'hierarchical'      => false,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array( 'slug' => 'bedrooms' ),
+		];
+
+		register_taxonomy( self::$bedrooms_taxonomy_id, self::$post_type_id, $args );
 	}
 
 	public function add_bids_meta_box( $post ) {
