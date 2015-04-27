@@ -43,7 +43,7 @@ Files which are used as [Page Templates](https://codex.wordpress.org/Page_Templa
 
 ### base.php, index.php, single-rentiflat_flat.php
 
-Template files used for app pages. They follow the WordPress [Template Hierarchy](https://codex.wordpress.org/Template_Hierarchy). Scribu's [Theme Wrappe](http://scribu.net/wordpress/theme-wrappers.html) is used so I don't have to replicate header and footer on all templates.
+Template files used for app pages. They follow the WordPress [Template Hierarchy](https://codex.wordpress.org/Template_Hierarchy). Scribu's [Theme Wrapper](http://scribu.net/wordpress/theme-wrappers.html) is used so I don't have to replicate header and footer on all templates.
 
 ### functions.php
 
