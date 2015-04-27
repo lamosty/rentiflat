@@ -1,5 +1,6 @@
-set :application, 'rentiflat'
 set :repo_url, 'git@github.com:lamosty/rentiflat.git'
+set :application, 'rentiflat'
+set :theme_name, 'rentiflat-theme'
 
 set :stages, %w(production staging)
 set :default_stage, "staging"
@@ -62,3 +63,35 @@ end
 # Note that you need to have WP-CLI installed on your server
 # Uncomment the following line to run it on deploys if needed
 # after 'deploy:publishing', 'deploy:update_option_paths'
+
+# Global bedrock theme path
+set :theme_path, Pathname.new('web/app/themes').join(fetch(:theme_name))
+
+# Local Paths
+set :local_app_path, Pathname.new(File.dirname(__FILE__)).join('../')
+set :local_theme_path, fetch(:local_app_path).join(fetch(:theme_path))
+set :local_dist_path, fetch(:local_theme_path).join('dist')
+
+namespace :assets do
+  task :compile do
+    run_locally do
+      within fetch(:local_theme_path) do
+        execute :gulp, '--production'
+      end
+    end
+  end
+
+  task :copy do
+    on roles(:web) do
+      # Remote Paths
+      set :remote_theme_path, release_path.join(fetch(:theme_path))
+      set :remote_dist_path, fetch(:remote_theme_path).join('dist')
+
+      upload! fetch(:local_dist_path).to_s, fetch(:remote_dist_path), recursive: true
+    end
+  end
+
+  task deploy: %w(compile copy)
+end
+
+after 'deploy:published', 'assets:deploy'
