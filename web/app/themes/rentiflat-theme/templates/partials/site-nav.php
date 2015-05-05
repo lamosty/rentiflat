@@ -34,13 +34,24 @@ use Lamosty\RentiFlat\Utils\Template_Helper;
 					<?php
 					if ( is_user_logged_in() ) {
 						?>
-						<li class="<?= Template_Helper::nav_set_active( '/add-new-flat/' ); ?>">
-							<a href="<?= home_url( '/add-new-flat/' ); ?>">Add New Flat</a>
+						<li>
+							<a href="<?= site_url( '/wp-admin/post-new.php?post_type=rentiflat_flat' ); ?>">
+								Add Flat
+							</a>
+						</li>
+						<li>
+							<a href="<?= site_url( '/wp-admin/edit.php?post_type=rentiflat_flat' ); ?>">
+								Manage Flats
+							</a>
+						</li>
+						<li>
+							<a href="<?= site_url( '/wp-admin/profile.php' ); ?>">
+								Profile
+							</a>
 						</li>
 						<li>
 							<a href="<?= site_url( '/wp-login.php?action=logout&redirect_to=' .
-							                       Template_Helper::current_url() ); ?>"
-							>
+							                       Template_Helper::current_url() ); ?>">
 								Logout
 							</a>
 						</li>
@@ -52,8 +63,7 @@ use Lamosty\RentiFlat\Utils\Template_Helper;
 						<li>
 							<a href=
 							   "<?= site_url( '/wp-login.php?redirect_to=' .
-							                  Template_Helper::current_url() ); ?>"
-							>
+							                  Template_Helper::current_url() ); ?>">
 								Login
 							</a>
 						</li>
