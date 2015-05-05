@@ -162,6 +162,9 @@ class Flat {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array( 'slug' => 'bedrooms' ),
+			'capabilities' => [
+				'assign_terms' => 'edit_rentiflat_flats'
+			]
 		];
 
 		register_taxonomy( self::$flat_types_taxonomy_id, self::$post_type_id, $args );
@@ -177,7 +180,10 @@ class Flat {
 			'query_var'         => false,
 			'show_ui'           => true,
 			'show_in_menu'      => false,
-			'show_admin_column' => true
+			'show_admin_column' => true,
+			'capabilities' => [
+			'assign_terms' => 'edit_rentiflat_flats'
+		]
 		] );
 
 		// City
@@ -189,7 +195,10 @@ class Flat {
 			'query_var'         => false,
 			'show_ui'           => true,
 			'show_in_menu'      => false,
-			'show_admin_column' => true
+			'show_admin_column' => true,
+			'capabilities' => [
+				'assign_terms' => 'edit_rentiflat_flats'
+			]
 		] );
 	}
 
