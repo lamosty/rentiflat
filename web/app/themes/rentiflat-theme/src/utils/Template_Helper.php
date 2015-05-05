@@ -48,6 +48,12 @@ final class Template_Helper {
 		return '';
 	}
 
+	public static function current_url() {
+		global $wp;
+
+		return home_url() . '/' . $wp->request;
+	}
+
 	public static function flat_has_feature( $flat_id, $feature_name ) {
 		$feature = get_post_meta($flat_id, $feature_name, true);
 
