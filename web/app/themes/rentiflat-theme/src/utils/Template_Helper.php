@@ -58,5 +58,11 @@ final class Template_Helper {
 		}
 	}
 
+	public static function get_profile_picture(\WP_User $user) {
+		$uploads_dir = wp_upload_dir()['baseurl'];
+
+		return $uploads_dir . '/' . $user->rentiflat_fb_picture;
+	}
+
 }
 

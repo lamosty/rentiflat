@@ -27,6 +27,9 @@ if ( have_posts() ) :
 			];
 		}
 
+		$user          = get_userdata( get_current_user_id() );
+		$user_fullname = $user->user_firstname . ' ' . $user->user_lastname;
+
 		?>
 
 		<div class="container">
@@ -110,11 +113,12 @@ if ( have_posts() ) :
 				</div>
 				<div class="flat-owner col-md-2">
 					<div class="picture">
-						<img src="holder.js/130x130" alt="Flat owner picture"/>
+						<img src="<?= TH::get_profile_picture( $user ); ?>"
+						     alt="<?= $user_fullname; ?> profile picture"/>
 					</div>
 					<div class="name">
-						<a href="#" target="_blank">
-							Rastislav Lamos
+						<a href="<?= $user->rentiflat_fb_url; ?>" target="_blank">
+							<?= $user_fullname; ?>
 							<sup><i class="mdi-action-open-in-new"></i></sup>
 
 						</a>
@@ -154,7 +158,7 @@ if ( have_posts() ) :
 					<div class="feature">
 						<div class="name">Floor</div>
 						<span class="floor-num">
-							<?= get_post_meta($post_id, 'floor_num', true); ?>.
+							<?= get_post_meta( $post_id, 'floor_num', true ); ?>.
 						</span>
 					</div>
 				</div>
@@ -170,10 +174,11 @@ if ( have_posts() ) :
 					<div class="row">
 						<div class="tenant">
 							<div class="picture">
-								<img src="holder.js/130x130" alt="User tenant picture"/>
+								<img src="<?= TH::get_profile_picture( $user ); ?>"
+								     alt="<?= $user_fullname; ?> profile picture"/>
 							</div>
 							<div class="name">
-								Rastislav Lamos
+								<?= $user_fullname; ?>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -182,7 +187,8 @@ if ( have_posts() ) :
 									<div class="form-group">
 										<div class="col-md-6">
 											<div class="input-group form-control-wrapper">
-												<input type="text" class="form-control empty"/>
+												<input type="text" class="form-control"
+													value="<?= get_post_meta( $post_id, 'price_per_month', true ); ?>"/>
 
 												<div class="floating-label">Bidding price</div>
 												<span class="material-input"></span>
@@ -193,7 +199,8 @@ if ( have_posts() ) :
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="form-control-wrapper">
-												<input type="email" class="form-control empty"/>
+												<input type="email" class="form-control"
+													value="<?= $user->user_email; ?>"/>
 
 												<div class="floating-label">Email address</div>
 												<div class="material-input"></div>
