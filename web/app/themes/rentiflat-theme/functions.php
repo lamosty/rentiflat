@@ -18,7 +18,7 @@ function initialize_IOC() {
 		->singleton( 'bid', __NAMESPACE__ . '\Bid' )
 		->singleton( 'theme', __NAMESPACE__ . '\Theme' )
 		->singleton( 'user', __NAMESPACE__ . '\User' )
-		->singleton( 'fb_auth', __NAMESPACE__ . '\FB_Auth' );
+		->singleton( 'auth', __NAMESPACE__ . '\Auth' );
 
 	return $container;
 }

@@ -38,7 +38,7 @@ use Lamosty\RentiFlat\Utils\Template_Helper;
 
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="<?= home_url( '/register/' ); ?>">Register</a></li>
-					<li><a href="<?= home_url( '/login/' ); ?>">Login</a></li>
+					<li><a href="<?= site_url( '/wp-login.php' ); ?>">Login</a></li>
 				</ul>
 			</div>
 		</div>

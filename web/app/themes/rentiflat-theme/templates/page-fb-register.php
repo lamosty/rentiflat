@@ -11,19 +11,45 @@ namespace Lamosty\RentiFlat;
 
 $container = get_IOC_container();
 
-/** @var FB_Auth $fb_auth */
-$fb_auth = $container->lookup('fb_auth');
+/** @var Auth $auth */
+$auth = $container->lookup( 'auth' );
+
+$auth->enqueue_fb_js_sdk();
+
 
 ?>
 
+<div id="fb-root"></div>
 <div class="container">
 	<section id="fb-register" class="center">
-		<h1><?= __( 'Register with RentiFlat' ); ?></h1>
+		<?php
 
-		<p><?= __( "To register, you need to authenticate with your Facebook profile." ); ?></p>
-		<a href="<?= $fb_auth->get_fb_login_url(); ?>" class="btn btn-primary">
-			Authenticate with Facebook
-		</a>
+		if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
+
+			$errors = $auth->register_user();
+
+			if ( ! is_wp_error( $errors ) ) {
+
+				$user_id = $errors;
+
+				$auth->add_fb_data($user_id);
+				$auth->template_registration_successful();
+
+			} else {
+
+				$auth->template_registration_errors( $errors );
+				$auth->template_registration_form();
+			}
+		} else {
+
+			$auth->template_auth_with_fb();
+			$auth->template_registration_form( [ 'display' => 'none' ] );
+
+		}
+
+		?>
+
+
 	</section>
 </div>
 

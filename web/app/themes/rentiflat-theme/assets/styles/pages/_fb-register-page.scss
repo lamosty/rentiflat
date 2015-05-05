@@ -5,4 +5,29 @@
 #fb-register {
   padding-bottom: 60px;
   padding-top: 20px;
+
+  .errors {
+    margin-top: 30px;
+    list-style: none;
+
+    li {
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+
+    strong {
+      text-transform: lowercase;
+      color: $red;
+    }
+  }
+}
+
+#rentiflat-register-form {
+  width: 280px;
+  margin: 0 auto;
+  padding-top: 20px;
+
+  .form-control-wrapper {
+    width: 100%;
+  }
 }

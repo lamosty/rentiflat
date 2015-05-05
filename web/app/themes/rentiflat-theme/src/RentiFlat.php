@@ -25,8 +25,8 @@ final class RentiFlat {
 	/** @var User $user */
 	public $user;
 
-	/** @var FB_Auth $fb_auth */
-	public $fb_auth;
+	/** @var Auth $fb_auth */
+	public $auth;
 
 	/**
 	 * IOC dependencies
@@ -37,7 +37,7 @@ final class RentiFlat {
 			'flat',
 			'bid',
 			'user',
-			'fb_auth'
+			'auth'
 		];
 	}
 
@@ -46,6 +46,6 @@ final class RentiFlat {
 		$this->flat->init();
 		$this->bid->init();
 		$this->user->init();
-		$this->fb_auth->init();
+		$this->auth->init();
 	}
 }

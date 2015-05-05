@@ -40,7 +40,7 @@
         "vlucas/phpdotenv": "1.0.9",
         "johnpbloch/wordpress": "^4.1",
         "lamosty/bedrock-plugin-control": "~1",
-        "facebook/php-sdk-v4": "4.0.*"
+        "facebook/php-sdk-v4": "~4.1.0@dev"
     },
     "require-dev": {
         "wpackagist-plugin/query-monitor": "dev-trunk",

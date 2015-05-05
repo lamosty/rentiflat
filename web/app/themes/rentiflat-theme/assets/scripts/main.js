@@ -26,6 +26,45 @@
             init: function () {
                 $('#flat-photos').find('[data-photo-large]').on('click', swap_large_image);
             }
+        },
+        page_template_page_fb_register: {
+            init: function () {
+                var that = this;
+
+                $(document).on('rentiflat_fbInit', function() {
+                    that.authBtnClick();
+                });
+            },
+            authBtnClick: function() {
+                var that = this;
+
+                $('#fb-login').on('click', function(e) {
+                    e.preventDefault();
+
+                    FB.getLoginStatus(function (response) {
+                        // not logged in or authorized yet
+                        if (response.status !== 'connected') {
+                            that.doFBLogin();
+                        } else {
+                            that.handleFBLoggedIn(response.authResponse);
+                        }
+                    });
+                })
+            },
+            doFBLogin: function () {
+                var that = this;
+
+                FB.login(function(response) {
+                    // authorized or logged in successfully
+                    if (response.authResponse) {
+                        that.handleFBLoggedIn(response.authResponse);
+                    }
+                });
+            },
+            handleFBLoggedIn: function(authData) {
+                $('#fb-login').hide();
+                $('#rentiflat-register-form').show();
+            }
         }
     };
 
