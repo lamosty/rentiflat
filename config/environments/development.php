@@ -12,4 +12,10 @@ define('SAVEQUERIES', true);
 define('WP_DEBUG', true);
 define('SCRIPT_DEBUG', true);
 
-define('WP_DEBUG_LOG', getenv('WP_DEBUG_LOG'));
+$wp_debug_log = false;
+
+if (getenv('WP_DEBUG_LOG') === 'true') {
+	$wp_debug_log = true;
+}
+
+define('WP_DEBUG_LOG', $wp_debug_log);

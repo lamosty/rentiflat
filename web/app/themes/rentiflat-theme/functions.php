@@ -17,7 +17,8 @@ function initialize_IOC() {
 		->singleton( 'flat', __NAMESPACE__ . '\Flat' )
 		->singleton( 'bid', __NAMESPACE__ . '\Bid' )
 		->singleton( 'theme', __NAMESPACE__ . '\Theme' )
-		->singleton( 'user', __NAMESPACE__ . '\User' );
+		->singleton( 'user', __NAMESPACE__ . '\User' )
+		->singleton( 'fb_auth', __NAMESPACE__ . '\FB_Auth' );
 
 	return $container;
 }
@@ -29,6 +30,15 @@ function initialize_app( Container $container ) {
 	$rentiflat->init();
 }
 
-$container = initialize_IOC();
 
-initialize_app( $container );
+function get_IOC_container() {
+	static $container;
+
+	if ( ! $container ) {
+		$container = initialize_IOC();
+	}
+
+	return $container;
+}
+
+initialize_app( get_IOC_container() );
