@@ -18,7 +18,6 @@ class User {
 		'delete_rentiflat_flats',
 		'delete_published_rentiflat_flats',
 		'read_private_rentiflat_flats',
-
 		// RentiFlat Bid post type
 		'publish_rentiflat_bids',
 		'edit_rentiflat_bids',
@@ -26,7 +25,6 @@ class User {
 		'delete_rentiflat_bids',
 		'delete_published_rentiflat_bids',
 		'read_private_rentiflat_bids',
-
 		// common
 		'read',
 		'upload_files'
@@ -34,12 +32,17 @@ class User {
 
 	public function init() {
 		$this->add_wp_actions();
+		$this->add_wp_filters();
 	}
 
 	private function add_wp_actions() {
 		add_action( 'after_switch_theme', [ $this, 'add_user_role' ] );
 		add_action( 'after_switch_theme', [ $this, 'add_capabilities_to_user' ] );
 		add_action( 'after_switch_theme', [ $this, 'add_capabilities_to_admin' ] );
+	}
+
+	private function add_wp_filters() {
+		add_filter( 'show_admin_bar', [ $this, 'handle_admin_bar' ] );
 	}
 
 	public function add_user_role() {
@@ -65,6 +68,14 @@ class User {
 		foreach ( $capabilities as $cap ) {
 			$role->add_cap( $cap );
 		}
+	}
+
+	public function handle_admin_bar() {
+		if ( current_user_can( 'manage_options' ) ) {
+			return true;
+		}
+
+		return false;
 	}
 
 
