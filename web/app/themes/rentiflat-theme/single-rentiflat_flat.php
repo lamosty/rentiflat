@@ -27,7 +27,7 @@ if ( have_posts() ) :
 			];
 		}
 
-		$user          = get_userdata( get_current_user_id() );
+		$user          = get_userdata( get_the_author_meta('ID') );
 		$user_fullname = $user->user_firstname . ' ' . $user->user_lastname;
 
 		?>
