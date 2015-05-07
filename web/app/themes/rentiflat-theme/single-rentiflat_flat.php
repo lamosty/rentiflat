@@ -6,11 +6,14 @@
 use Lamosty\RentiFlat\Theme;
 use Lamosty\RentiFlat\Flat;
 use Lamosty\RentiFlat\Utils\Template_Helper as TH;
+use Lamosty\RentiFlat\User;
 
 // Set some global variables for the current flat page
 if ( have_posts() ) :
 	while ( have_posts() ) :
 		the_post();
+
+		do_action('rentiflat_flat_page', get_the_ID());
 
 		$post_id = get_the_ID();
 
@@ -27,8 +30,7 @@ if ( have_posts() ) :
 			];
 		}
 
-		$user          = get_userdata( get_the_author_meta('ID') );
-		$user_fullname = $user->user_firstname . ' ' . $user->user_lastname;
+		$flat_owner = get_userdata( get_the_author_meta( 'ID' ) );
 
 		?>
 
@@ -113,12 +115,12 @@ if ( have_posts() ) :
 				</div>
 				<div class="flat-owner col-md-2">
 					<div class="picture">
-						<img src="<?= TH::get_profile_picture( $user ); ?>"
-						     alt="<?= $user_fullname; ?> profile picture"/>
+						<img src="<?= User::get_profile_picture( $flat_owner ); ?>"
+						     alt="<?= User::get_full_name( $flat_owner ); ?> profile picture"/>
 					</div>
 					<div class="name">
-						<a href="<?= $user->rentiflat_fb_url; ?>" target="_blank">
-							<?= $user_fullname; ?>
+						<a href="<?= User::get_fb_url( $flat_owner ); ?>" target="_blank">
+							<?= User::get_full_name( $flat_owner ); ?>
 							<sup><i class="mdi-action-open-in-new"></i></sup>
 
 						</a>
@@ -174,11 +176,10 @@ if ( have_posts() ) :
 					<div class="row">
 						<div class="tenant">
 							<div class="picture">
-								<img src="<?= TH::get_profile_picture( $user ); ?>"
-								     alt="<?= $user_fullname; ?> profile picture"/>
+								<img src=""
+								     alt=" profile picture"/>
 							</div>
 							<div class="name">
-								<?= $user_fullname; ?>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -188,7 +189,7 @@ if ( have_posts() ) :
 										<div class="col-md-6">
 											<div class="input-group form-control-wrapper">
 												<input type="text" class="form-control"
-													value="<?= get_post_meta( $post_id, 'price_per_month', true ); ?>"/>
+												       value="<?= get_post_meta( $post_id, 'price_per_month', true ); ?>"/>
 
 												<div class="floating-label">Bidding price</div>
 												<span class="material-input"></span>
@@ -200,7 +201,7 @@ if ( have_posts() ) :
 										<div class="col-md-12">
 											<div class="form-control-wrapper">
 												<input type="email" class="form-control"
-													value="<?= $user->user_email; ?>"/>
+												       value=""/>
 
 												<div class="floating-label">Email address</div>
 												<div class="material-input"></div>

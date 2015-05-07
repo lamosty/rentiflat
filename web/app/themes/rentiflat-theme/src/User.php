@@ -78,5 +78,17 @@ class User {
 		return false;
 	}
 
+	public static function get_profile_picture(\WP_User $user) {
+		$uploads_dir = wp_upload_dir()['baseurl'];
 
+		return $uploads_dir . '/' . $user->rentiflat_fb_picture;
+	}
+
+	public static function get_full_name(\WP_User $user) {
+		return $user->user_firstname . ' ' . $user->user_lastname;
+	}
+
+	public static function get_fb_url(\WP_User $user) {
+		return $user->rentiflat_fb_url;
+	}
 }

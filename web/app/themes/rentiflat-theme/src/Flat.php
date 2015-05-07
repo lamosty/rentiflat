@@ -27,6 +27,8 @@ class Flat {
 		add_action( 'init', [ $this, '_wp_init' ] );
 		add_action( 'after_switch_theme', [ $this, 'insert_terms' ] );
 		add_action( 'add_meta_boxes_' . self::$post_type_id, [ $this, 'add_flat_meta_data' ] );
+
+		add_action( 'rentiflat_flat_page', [ $this, 'add_flat_page_js_variables' ] );
 	}
 
 	private function add_wp_filters() {
@@ -162,7 +164,7 @@ class Flat {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array( 'slug' => 'bedrooms' ),
-			'capabilities' => [
+			'capabilities'      => [
 				'assign_terms' => 'edit_rentiflat_flats'
 			]
 		];
@@ -181,9 +183,9 @@ class Flat {
 			'show_ui'           => true,
 			'show_in_menu'      => false,
 			'show_admin_column' => true,
-			'capabilities' => [
-			'assign_terms' => 'edit_rentiflat_flats'
-		]
+			'capabilities'      => [
+				'assign_terms' => 'edit_rentiflat_flats'
+			]
 		] );
 
 		// City
@@ -196,7 +198,7 @@ class Flat {
 			'show_ui'           => true,
 			'show_in_menu'      => false,
 			'show_admin_column' => true,
-			'capabilities' => [
+			'capabilities'      => [
 				'assign_terms' => 'edit_rentiflat_flats'
 			]
 		] );
@@ -236,6 +238,19 @@ class Flat {
 		}
 
 		return $settings;
+	}
+
+	public function add_flat_page_js_variables( $flat_page_id ) {
+		$user = wp_get_current_user();
+
+		wp_localize_script( 'rentiflat-main-js', 'RentiFlatTenantData', [
+			'tenant_fullname'        => User::get_full_name( $user ),
+			'tenant_profile_picture' => User::get_profile_picture( $user ),
+			'tenant_email'           => $user->user_email,
+			'flat_price_per_month'   => get_post_meta( $flat_page_id, 'price_per_month', true ),
+			'flat_page_id'           => $flat_page_id
+		] );
+
 	}
 
 }
