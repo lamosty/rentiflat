@@ -51,10 +51,10 @@ final class Theme {
 
 	private function add_flat_photos_sizes() {
 		// Flat featured photo (the large one on flat page)
-		set_post_thumbnail_size(690, 460);
+		set_post_thumbnail_size( 690, 460 );
 
 		// Thumbnail photo
-		add_image_size(self::FLAT_THUMBNAIL_SIZE, 128, 80);
+		add_image_size( self::FLAT_THUMBNAIL_SIZE, 128, 80 );
 	}
 
 	private function setup_theme() {
@@ -68,18 +68,11 @@ final class Theme {
 	public function enqueue_scripts() {
 		// Deregister WordPress jQuery and register our own
 		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', Template_Helper::asset_path( 'scripts/jquery.js' ), [ ], null, true );
 
-		wp_register_script( 'modernizr', Template_Helper::asset_path( 'scripts/modernizr.js' ), [ ], null, true );
-
+		wp_register_script( 'rentiflat-libraries-js', Template_Helper::asset_path( 'scripts/libraries.js' ), [ ], null, true );
 
 		wp_enqueue_script( 'rentiflat-main-js', Template_Helper::asset_path( 'scripts/main.js' ),
-			[
-				'modernizr',
-				'jquery'
-			],
-			null, true
-		);
+			[ 'rentiflat-libraries-js' ], null, true );
 	}
 
 	public function enqueue_styles() {

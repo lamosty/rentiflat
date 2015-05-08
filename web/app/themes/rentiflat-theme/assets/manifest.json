@@ -1,8 +1,21 @@
 {
     "dependencies": {
+        "libraries.js": {
+            "bower": [
+                "jquery",
+                "modernizr",
+                "react",
+                "bootstrap-material-design",
+                "bootstrap-sass-official",
+                "holderjs"
+            ]
+
+        },
         "main.js": {
             "files": [
-                "scripts/main.js"
+                "scripts/main.js",
+                "scripts/react/components/**/*",
+                "scripts/react/pages/flat-page-bids.jsx"
             ],
             "main": true
         },
@@ -17,12 +30,6 @@
                 "styles/30_main.scss"
             ],
             "main": true
-        },
-        "jquery.js": {
-            "bower": ["jquery"]
-        },
-        "modernizr.js": {
-            "bower": ["modernizr"]
         }
     },
     "config": {

@@ -120,8 +120,11 @@ var jsTasks = function (filename) {
         .pipe(function () {
             return $.if(enabled.maps, $.sourcemaps.init());
         })
+        .pipe(function() {
+            return $.if('*.jsx', $.react())
+        })
         .pipe($.concat, filename)
-        .pipe($.uglify)
+        //.pipe($.uglify)
         .pipe(function () {
             return $.if(enabled.rev, $.rev());
         })
@@ -184,6 +187,12 @@ gulp.task('styles', ['wiredep'], function () {
 gulp.task('scripts', function () {
     var merged = merge();
     manifest.forEachDependency('js', function (dep) {
+        if (!argv.production) {
+            if (dep.name == 'libraries.js' && fs.existsSync('dist/scripts/libraries.js')) {
+                return;
+            }
+        }
+
         merged.add(
             gulp.src(dep.globs, {base: 'scripts'})
                 .pipe(jsTasks(dep.name))

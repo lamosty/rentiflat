@@ -11,7 +11,8 @@
         "jquery": "~2",
         "bootstrap-material-design": "~0.3",
         "bootstrap-sass-official": "~3.3.4",
-        "holderjs": "~2.6.0"
+        "holderjs": "~2.6.0",
+        "react": "~0.13.2"
     },
     "overrides": {
         "modernizr": {
