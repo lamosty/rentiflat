@@ -49,8 +49,9 @@ class Bid {
 			'has_archive'        => false,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
-			'delete_with_user'   => true
+			'supports'           => array( 'title', 'author', 'custom-fields' ),
+			'delete_with_user'   => true,
+			'show_in_json'       => true
 		];
 
 		register_post_type( self::$post_type_id, $flat_post_type_args );

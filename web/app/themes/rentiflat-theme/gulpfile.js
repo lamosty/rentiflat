@@ -117,10 +117,11 @@ var cssTasks = function (filename) {
 // ```
 var jsTasks = function (filename) {
     return lazypipe()
+        .pipe($.plumber)
         .pipe(function () {
             return $.if(enabled.maps, $.sourcemaps.init());
         })
-        .pipe(function() {
+        .pipe(function () {
             return $.if('*.jsx', $.react())
         })
         .pipe($.concat, filename)

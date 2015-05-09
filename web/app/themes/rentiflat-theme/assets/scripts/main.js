@@ -25,6 +25,18 @@
         'single_rentiflat_flat': {
             init: function () {
                 $('#flat-photos').find('[data-photo-large]').on('click', swap_large_image);
+
+                this.initBids();
+            },
+
+            initBids: function() {
+                React.render(
+                    React.createElement(FlatPageBids, {
+                        'data': RentiFlatTenantData,
+                        'bids': RentiFlatBids
+                    }),
+                    document.getElementById('bids')
+                );
             }
         },
         page_template_page_fb_register: {

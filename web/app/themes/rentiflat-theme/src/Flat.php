@@ -29,6 +29,7 @@ class Flat {
 		add_action( 'add_meta_boxes_' . self::$post_type_id, [ $this, 'add_flat_meta_data' ] );
 
 		add_action( 'rentiflat_flat_page', [ $this, 'add_flat_page_js_variables' ] );
+		add_action( 'rentiflat_flat_page', [ $this, 'flat_bids_to_js' ], 10, 2 );
 	}
 
 	private function add_wp_filters() {
@@ -248,9 +249,53 @@ class Flat {
 			'tenant_profile_picture' => User::get_profile_picture( $user ),
 			'tenant_email'           => $user->user_email,
 			'flat_price_per_month'   => get_post_meta( $flat_page_id, 'price_per_month', true ),
-			'flat_page_id'           => $flat_page_id
+			'flat_page_id'           => $flat_page_id,
+			'flat_page_title'        => get_the_title( $flat_page_id ),
+			'api_url'                => esc_url_raw( get_json_url() ),
+			'nonce'                  => wp_create_nonce( 'wp_json' ),
 		] );
 
 	}
 
+	/**
+	 * Collect bids for a specific flat page.
+	 *
+	 * TODO: load it asynchronously
+	 *
+	 * @param integer $flat_page_id ID of the flat page (post)
+	 */
+	public function flat_bids_to_js( $flat_page_id, $flat_owner) {
+		$bids_from_db = get_posts( [
+			'post_parent' => $flat_page_id,
+			'post_type'   => Bid::$post_type_id
+		] );
+
+		$bids = [ ];
+
+		foreach ( $bids_from_db as $bid ) {
+			$bid_author = get_userdata( $bid->post_author );
+
+			$candidate_name   = $bid_author->user_firstname;
+			$candidate_email  = 'hidden';
+			$candidate_fb_url = 'hidden';
+
+			// Flat owner viewing his flat offer. Show all bids info.
+			if ( get_current_user_id() == $flat_owner->ID ) {
+				$candidate_name   = User::get_full_name( $bid_author );
+				$candidate_email  = $bid->tenant_email;
+				$candidate_fb_url = User::get_fb_url( $bid_author );
+			}
+
+			$bids[] = [
+				'candidate_name'    => $candidate_name,
+				'candidate_email'   => $candidate_email,
+				'candidate_picture' => User::get_profile_picture( $bid_author ),
+				'candidate_fb_url'  => $candidate_fb_url,
+				'date'              => $bid->post_date_gmt,
+				'price_per_month'   => $bid->flat_price_per_month
+			];
+		}
+
+		wp_localize_script( 'rentiflat-main-js', 'RentiFlatBids', $bids );
+	}
 }

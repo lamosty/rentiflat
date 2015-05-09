@@ -1,51 +1,55 @@
 {
-    "name": "RentiFlat",
-    "homepage": "https://rentiflat.lamosty.com/",
-    "authors": [
-        "Rastislav Lamos <lamos.rasto@gmail.com>"
-    ],
-    "license": "GPLv2+",
-    "private": true,
-    "dependencies": {
-        "modernizr": "2.8.2",
-        "jquery": "~2",
-        "bootstrap-material-design": "~0.3",
-        "bootstrap-sass-official": "~3.3.4",
-        "holderjs": "~2.6.0",
-        "react": "~0.13.2"
+  "name": "RentiFlat",
+  "homepage": "https://rentiflat.lamosty.com/",
+  "authors": [
+    "Rastislav Lamos <lamos.rasto@gmail.com>"
+  ],
+  "license": "GPLv2+",
+  "private": true,
+  "dependencies": {
+    "modernizr": "2.8.2",
+    "jquery": "~2",
+    "bootstrap-material-design": "~0.3",
+    "bootstrap-sass-official": "~3.3.4",
+    "holderjs": "~2.6.0",
+    "react": "~0.13.2",
+    "moment": "~2.10.2"
+  },
+  "overrides": {
+    "modernizr": {
+      "main": "./modernizr.js"
     },
-    "overrides": {
-        "modernizr": {
-            "main": "./modernizr.js"
-        },
-        "bootstrap-sass-official": {
-            "main": [
-                "./assets/stylesheets/_bootstrap.scss",
-                "./assets/javascripts/bootstrap/transition.js",
-                "./assets/javascripts/bootstrap/alert.js",
-                "./assets/javascripts/bootstrap/button.js",
-                "./assets/javascripts/bootstrap/carousel.js",
-                "./assets/javascripts/bootstrap/collapse.js",
-                "./assets/javascripts/bootstrap/dropdown.js",
-                "./assets/javascripts/bootstrap/modal.js",
-                "./assets/javascripts/bootstrap/tooltip.js",
-                "./assets/javascripts/bootstrap/popover.js",
-                "./assets/javascripts/bootstrap/scrollspy.js",
-                "./assets/javascripts/bootstrap/tab.js",
-                "./assets/javascripts/bootstrap/affix.js"
-            ]
-        },
-        "bootstrap-material-design": {
-            "main": [
-                "./less/material.less",
-                "dist/js/material.js",
-                "dist/css/ripples.css",
-                "dist/js/ripples.js",
-                "dist/fonts/Material-Design-Icons.eot",
-                "dist/fonts/Material-Design-Icons.svg",
-                "dist/fonts/Material-Design-Icons.ttf",
-                "dist/fonts/Material-Design-Icons.woff"
-            ]
-        }
+    "bootstrap-sass-official": {
+      "main": [
+        "./assets/stylesheets/_bootstrap.scss",
+        "./assets/javascripts/bootstrap/transition.js",
+        "./assets/javascripts/bootstrap/alert.js",
+        "./assets/javascripts/bootstrap/button.js",
+        "./assets/javascripts/bootstrap/carousel.js",
+        "./assets/javascripts/bootstrap/collapse.js",
+        "./assets/javascripts/bootstrap/dropdown.js",
+        "./assets/javascripts/bootstrap/modal.js",
+        "./assets/javascripts/bootstrap/tooltip.js",
+        "./assets/javascripts/bootstrap/popover.js",
+        "./assets/javascripts/bootstrap/scrollspy.js",
+        "./assets/javascripts/bootstrap/tab.js",
+        "./assets/javascripts/bootstrap/affix.js"
+      ]
+    },
+    "bootstrap-material-design": {
+      "main": [
+        "./less/material.less",
+        "dist/js/material.js",
+        "dist/css/ripples.css",
+        "dist/js/ripples.js",
+        "dist/fonts/Material-Design-Icons.eot",
+        "dist/fonts/Material-Design-Icons.svg",
+        "dist/fonts/Material-Design-Icons.ttf",
+        "dist/fonts/Material-Design-Icons.woff"
+      ]
+    },
+    "react": {
+      "main": "./react-with-addons.js"
     }
+  }
 }

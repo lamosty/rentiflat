@@ -13,7 +13,9 @@ if ( have_posts() ) :
 	while ( have_posts() ) :
 		the_post();
 
-		do_action('rentiflat_flat_page', get_the_ID());
+		$flat_owner = get_userdata( get_the_author_meta( 'ID' ) );
+
+		do_action('rentiflat_flat_page', get_the_ID(), $flat_owner);
 
 		$post_id = get_the_ID();
 
@@ -30,7 +32,6 @@ if ( have_posts() ) :
 			];
 		}
 
-		$flat_owner = get_userdata( get_the_author_meta( 'ID' ) );
 
 		?>
 
@@ -171,113 +172,7 @@ if ( have_posts() ) :
 
 		</section>
 		<div class="container">
-			<section id="bids" class="row">
-				<div class="bid-form-section col-md-6">
-					<div class="row">
-						<div class="tenant">
-							<div class="picture">
-								<img src=""
-								     alt=" profile picture"/>
-							</div>
-							<div class="name">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<form id="bid-form" class="form-horizontal" action="#">
-								<fieldset>
-									<div class="form-group">
-										<div class="col-md-6">
-											<div class="input-group form-control-wrapper">
-												<input type="text" class="form-control"
-												       value="<?= get_post_meta( $post_id, 'price_per_month', true ); ?>"/>
-
-												<div class="floating-label">Bidding price</div>
-												<span class="material-input"></span>
-												<span class="input-group-addon">$</span>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="form-control-wrapper">
-												<input type="email" class="form-control"
-												       value=""/>
-
-												<div class="floating-label">Email address</div>
-												<div class="material-input"></div>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<button type="submit" class="btn btn-primary">I'm interested</button>
-										</div>
-									</div>
-								</fieldset>
-							</form>
-
-						</div>
-					</div>
-				</div>
-				<div class="bids-list col-md-6">
-					<h3>List of candidates</h3>
-
-					<div class="bid">
-						<div class="picture">
-							<img src="holder.js/130x130" alt="Candidate picture"/>
-						</div>
-						<div class="info">
-							<div class="title">Name</div>
-							<div class="name">
-								Rastislav
-						<span class="label label-info" data-toggle="tooltip" data-placement="top"
-						      title="Only flat owners can see the last name.">
-							Hidden
-						</span>
-							</div>
-
-							<div class="title">Email address</div>
-							<div class="email">
-						<span class="label label-info" data-toggle="tooltip" data-placement="top"
-						      title="Only flat owners can see the email address.">
-							Hidden
-						</span>
-							</div>
-						</div>
-						<div class="price-info">
-							<div class="price">
-								460
-								<span class="currency">&euro;</span>
-							</div>
-							<div class="date">02/29/2015</div>
-						</div>
-					</div>
-
-					<div class="bid">
-						<div class="picture">
-							<img src="holder.js/130x130" alt="Candidate picture"/>
-						</div>
-						<div class="info">
-							<div class="title">Name</div>
-							<div class="name">
-								Rastislav Lamos
-							</div>
-
-							<div class="title">Email address</div>
-							<div class="email">
-								lamos.rasto@gmail.com
-							</div>
-						</div>
-						<div class="price-info">
-							<div class="price">
-								1500
-								<span class="currency">&euro;</span>
-							</div>
-							<div class="date">02/29/2015</div>
-						</div>
-					</div>
-				</div>
-
+			<section id="bids">
 			</section>
 		</div>
 

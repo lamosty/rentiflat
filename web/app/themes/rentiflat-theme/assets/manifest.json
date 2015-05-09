@@ -7,7 +7,8 @@
                 "react",
                 "bootstrap-material-design",
                 "bootstrap-sass-official",
-                "holderjs"
+                "holderjs",
+                "moment"
             ]
 
         },
@@ -15,7 +16,8 @@
             "files": [
                 "scripts/main.js",
                 "scripts/react/components/**/*",
-                "scripts/react/pages/flat-page-bids.jsx"
+                "scripts/react/pages/flat-page-bids.jsx",
+                "scripts/helpers.js"
             ],
             "main": true
         },
