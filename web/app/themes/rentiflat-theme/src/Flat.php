@@ -28,7 +28,7 @@ class Flat {
 		add_action( 'after_switch_theme', [ $this, 'insert_terms' ] );
 		add_action( 'add_meta_boxes_' . self::$post_type_id, [ $this, 'add_flat_meta_data' ] );
 
-		add_action( 'rentiflat_flat_page', [ $this, 'add_flat_page_js_variables' ] );
+		add_action( 'rentiflat_flat_page', [ $this, 'add_flat_page_js_variables' ], 10, 2 );
 		add_action( 'rentiflat_flat_page', [ $this, 'flat_bids_to_js' ], 10, 2 );
 	}
 
@@ -241,18 +241,37 @@ class Flat {
 		return $settings;
 	}
 
-	public function add_flat_page_js_variables( $flat_page_id ) {
+	public function add_flat_page_js_variables( $flat_page_id, $flat_owner ) {
 		$user = wp_get_current_user();
 
+		// Does the user have any previous bid on this flat?
+		$user_bids_query = new \WP_Query( [
+			'post_parent' => $flat_page_id,
+			'post_type'   => Bid::$post_type_id,
+			'author'      => $user->ID
+		] );
+
+		$user_bid_id   = null;
+		$bid_admin_url = '';
+
+		if ( $user_bids_query->have_posts() ) {
+			$user_bid_id   = $user_bids_query->posts[0]->ID;
+			$bid_admin_url = admin_url( 'post.php?post=' . $user_bid_id . '&action=edit' );
+		}
+
 		wp_localize_script( 'rentiflat-main-js', 'RentiFlatTenantData', [
+			'tenant_bid_id'          => $user_bid_id,
 			'tenant_fullname'        => User::get_full_name( $user ),
 			'tenant_profile_picture' => User::get_profile_picture( $user ),
 			'tenant_email'           => $user->user_email,
+			'tenant_fb_url'          => User::get_fb_url( $user ),
+			'flat_owner_name'        => User::get_full_name( $flat_owner ),
 			'flat_price_per_month'   => get_post_meta( $flat_page_id, 'price_per_month', true ),
 			'flat_page_id'           => $flat_page_id,
 			'flat_page_title'        => get_the_title( $flat_page_id ),
 			'api_url'                => esc_url_raw( get_json_url() ),
 			'nonce'                  => wp_create_nonce( 'wp_json' ),
+			'bid_admin_url'          => $bid_admin_url
 		] );
 
 	}
@@ -264,7 +283,7 @@ class Flat {
 	 *
 	 * @param integer $flat_page_id ID of the flat page (post)
 	 */
-	public function flat_bids_to_js( $flat_page_id, $flat_owner) {
+	public function flat_bids_to_js( $flat_page_id, $flat_owner ) {
 		$bids_from_db = get_posts( [
 			'post_parent' => $flat_page_id,
 			'post_type'   => Bid::$post_type_id
@@ -279,8 +298,8 @@ class Flat {
 			$candidate_email  = 'hidden';
 			$candidate_fb_url = 'hidden';
 
-			// Flat owner viewing his flat offer. Show all bids info.
-			if ( get_current_user_id() == $flat_owner->ID ) {
+			// Flat or bid owners viewing their flat offer. Show all bids info.
+			if ( (get_current_user_id() == $flat_owner->ID) || (get_current_user_id() == $bid_author->ID) ) {
 				$candidate_name   = User::get_full_name( $bid_author );
 				$candidate_email  = $bid->tenant_email;
 				$candidate_fb_url = User::get_fb_url( $bid_author );

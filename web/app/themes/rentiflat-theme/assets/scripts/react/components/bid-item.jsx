@@ -10,7 +10,7 @@ var BidItem = React.createClass({
         if (this.props.data['candidate_email'] === 'hidden') {
             candidateName = (
                 <div className="name">
-                    Rastislav
+                    {this.props.data['candidate_name']}
                     <span className="label label-info" dataToggle="tooltip" dataPlacement="top" title="Only flat owners can see the last name.">
                     Hidden
                     </span>

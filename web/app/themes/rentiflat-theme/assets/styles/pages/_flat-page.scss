@@ -110,7 +110,7 @@
 
   .features {
     @include floatfix;
-    
+
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -176,6 +176,15 @@
     h3 {
       margin-top: 0;
     }
+  }
+
+  .bid-enter {
+    opacity: 0.01;
+    transition: opacity .5s ease-in;
+  }
+
+  .bid-enter.bid-enter-active {
+    opacity: 1;
   }
 
   .bid {

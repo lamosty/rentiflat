@@ -4,7 +4,14 @@
  * @ Lamosty.com 2015
  */
 
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var FlatPageBids = React.createClass({
+    getInitialState: function () {
+        return {
+            bids: this.props.bids
+        };
+    },
     onBidSubmit: function (flatPricePerMonth, tenantEmail) {
         var bid = {
             title: 'Bid on ' + this.props.data['flat_page_title'],
@@ -25,6 +32,23 @@ var FlatPageBids = React.createClass({
             }
         ];
 
+        this.setState(function (previousState) {
+            var newBids = previousState.bids.slice();
+
+            newBids.unshift({
+                candidate_name: this.props.data['tenant_fullname'],
+                candidate_email: tenantEmail,
+                candidate_picture: this.props.data['tenant_profile_picture'],
+                candidate_fb_url: this.props.data['tenant_fb_url'],
+                date: moment().utc().format('YYYY-MM-DD HH:MM:SS').toString(),
+                price_per_month: flatPricePerMonth
+            });
+
+            return {
+                bids: newBids
+            };
+        });
+
         var that = this;
 
         RentiFlatHelpers.wpAPIRequest({
@@ -43,11 +67,11 @@ var FlatPageBids = React.createClass({
             });
         });
     },
-    _renderBids: function() {
+    _renderBids: function () {
         var bidItems = [];
 
-        this.props.bids.forEach(function(bid) {
-            bidItems.push(<BidItem data={bid} />);
+        this.state.bids.forEach(function (bid) {
+            bidItems.push(<BidItem data={bid} key={bid.date} />);
         });
 
         return bidItems;
@@ -59,7 +83,9 @@ var FlatPageBids = React.createClass({
 
                 <div className="bids-list col-md-6">
                     <h3>List of candidates</h3>
-                    {this._renderBids()}
+                    <ReactCSSTransitionGroup transitionName="bid" component="div">
+                        {this._renderBids()}
+                    </ReactCSSTransitionGroup>
                 </div>
             </div>
         );
