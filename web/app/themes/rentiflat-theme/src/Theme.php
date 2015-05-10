@@ -18,11 +18,13 @@ final class Theme {
 	const FLAT_THUMBNAIL_SIZE = 'rentiflat_flat_thumbnail';
 	const FLAT_FIND_FLATS_SIZE = 'rentiflat_find_flats';
 
-	const GMAPS_JS_API_KEY = 'AIzaSyBOjE7gyAri3i4SkwRq-KDTu6oiMWt0__A';
+	private $gmaps_js_api_key;
 
 	private $theme_options = [ ];
 
 	public function init() {
+		$this->gmaps_js_api_key = getenv('GMAPS_JS_API_KEY');
+
 		$this->add_wp_actions();
 		$this->add_wp_filters();
 	}
@@ -81,7 +83,7 @@ final class Theme {
 		$gmaps_js_api_url = 'https://maps.googleapis.com/maps/api/js?sensor=false';
 
 		if ( WP_ENV == 'production' ) {
-			$gmaps_js_api_url .= '&key=' . self::GMAPS_JS_API_KEY;
+			$gmaps_js_api_url .= '&key=' . $this->gmaps_js_api_key;
 		}
 		wp_register_script( 'rentiflat-gmaps-js-api', $gmaps_js_api_url, [ ], null, true );
 

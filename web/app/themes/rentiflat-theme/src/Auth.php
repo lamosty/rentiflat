@@ -9,13 +9,14 @@ use Facebook\Facebook;
 use Facebook\Exceptions\FacebookSDKException;
 
 class Auth {
-	// TODO: use dev keys for development, prod for production
-	private $app_id = '741714372615518';
-	private $app_secret = 'acfccab3db8a189065a052bd70db8835';
+	private $app_id;
+	private $app_secret;
 
 	private $profile_pictures_path = 'rentiflat_profiles';
 
 	public function init() {
+		$this->app_id = getenv('FB_APP_ID');
+		$this->app_secret = getenv('FB_APP_SECRET');
 	}
 
 	public function enqueue_fb_js_sdk() {
