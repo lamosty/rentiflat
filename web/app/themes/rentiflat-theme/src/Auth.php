@@ -9,6 +9,7 @@ use Facebook\Facebook;
 use Facebook\Exceptions\FacebookSDKException;
 
 class Auth {
+	// TODO: use dev keys for development, prod for production
 	private $app_id = '741714372615518';
 	private $app_secret = 'acfccab3db8a189065a052bd70db8835';
 

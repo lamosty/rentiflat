@@ -360,11 +360,11 @@ class Flat {
 
 		$curl = new CurlHttpAdapter();
 
-		if ( WP_ENV == 'production' ) {
-			$geocoder = new GoogleMaps( $curl, null, null, true, Theme::GMAPS_JS_API_KEY );
-		} else {
+//		if ( WP_ENV == 'production' ) {
+//			$geocoder = new GoogleMaps( $curl, null, null, true, Theme::GMAPS_JS_API_KEY );
+//		} else {
 			$geocoder = new GoogleMaps( $curl );
-		}
+//		}
 
 		$result           = $geocoder->geocode( $flat_address_in_string );
 		$geocoded_address = $result->first();
