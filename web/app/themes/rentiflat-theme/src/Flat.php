@@ -6,6 +6,8 @@
 namespace Lamosty\RentiFlat;
 
 use Lamosty\RentiFlat\Utils\Admin_Helper;
+use \Ivory\HttpAdapter\CurlHttpAdapter;
+use \Geocoder\Provider\GoogleMaps;
 
 class Flat {
 
@@ -30,6 +32,9 @@ class Flat {
 
 		add_action( 'rentiflat_flat_page', [ $this, 'add_flat_page_js_variables' ], 10, 2 );
 		add_action( 'rentiflat_flat_page', [ $this, 'flat_bids_to_js' ], 10, 2 );
+		add_action( 'rentiflat_flat_page', [ $this, 'enqueue_gmaps_js_api' ] );
+
+		add_action( 'publish_' . self::$post_type_id, [ $this, 'address_to_latlng' ] );
 	}
 
 	private function add_wp_filters() {
@@ -97,7 +102,8 @@ class Flat {
 			'elevator',
 			'balcony',
 			'cellar',
-			'floor_num'
+			'floor_num',
+			'street_name'
 		];
 
 		foreach ( $flat_meta_data as $meta ) {
@@ -299,7 +305,7 @@ class Flat {
 			$candidate_fb_url = 'hidden';
 
 			// Flat or bid owners viewing their flat offer. Show all bids info.
-			if ( (get_current_user_id() == $flat_owner->ID) || (get_current_user_id() == $bid_author->ID) ) {
+			if ( ( get_current_user_id() == $flat_owner->ID ) || ( get_current_user_id() == $bid_author->ID ) ) {
 				$candidate_name   = User::get_full_name( $bid_author );
 				$candidate_email  = $bid->tenant_email;
 				$candidate_fb_url = User::get_fb_url( $bid_author );
@@ -316,5 +322,42 @@ class Flat {
 		}
 
 		wp_localize_script( 'rentiflat-main-js', 'RentiFlatBids', $bids );
+	}
+
+	public function enqueue_gmaps_js_api() {
+		wp_enqueue_script( 'rentiflat-gmaps-js-api' );
+	}
+
+	public static function get_flat_address( $flat_page_id ) {
+		$country = get_the_terms( $flat_page_id, self::$country_taxonomy_id )[0]->name;
+		$city    = get_the_terms( $flat_page_id, self::$city_taxonomy_id )[0]->name;
+		$street  = get_post_meta( $flat_page_id, 'street_name', true );
+
+		return $street . ', ' . $city . ', ' . $country;
+	}
+
+	public function address_to_latlng( $flat_page_id ) {
+		$flat_address_in_string = self::get_flat_address( $flat_page_id );
+
+		$curl = new CurlHttpAdapter();
+
+		if ( WP_ENV == 'production' ) {
+			$geocoder = new GoogleMaps( $curl, null, null, true, Theme::GMAPS_JS_API_KEY );
+		} else {
+			$geocoder = new GoogleMaps( $curl );
+		}
+
+		$result           = $geocoder->geocode( $flat_address_in_string );
+		$geocoded_address = $result->first();
+
+		$previous_lat = get_post_meta( $flat_page_id, 'lat', true );
+
+		if ( empty( $previous_lat ) ) {
+			add_post_meta( $flat_page_id, 'lat', $geocoded_address->getLatitude(), true );
+			add_post_meta( $flat_page_id, 'lng', $geocoded_address->getLongitude(), true );
+		} else {
+			update_post_meta( $flat_page_id, 'lat', $geocoded_address->getLatitude() );
+			update_post_meta( $flat_page_id, 'lng', $geocoded_address->getLongitude() );
+		}
 	}
 }

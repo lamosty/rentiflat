@@ -17,6 +17,8 @@ final class Theme {
 
 	const FLAT_THUMBNAIL_SIZE = 'rentiflat_flat_thumbnail';
 
+	const GMAPS_JS_API_KEY = 'AIzaSyBOjE7gyAri3i4SkwRq-KDTu6oiMWt0__A';
+
 	private $theme_options = [ ];
 
 	public function init() {
@@ -69,7 +71,15 @@ final class Theme {
 		// Deregister WordPress jQuery and register our own
 		wp_deregister_script( 'jquery' );
 
-		wp_register_script( 'rentiflat-libraries-js', Template_Helper::asset_path( 'scripts/libraries.js' ), [ ], null, true );
+		wp_register_script( 'rentiflat-libraries-js',
+			Template_Helper::asset_path( 'scripts/libraries.js' ), [ ], null, true );
+
+		$gmaps_js_api_url = 'https://maps.googleapis.com/maps/api/js?sensor=false';
+
+		if (WP_ENV == 'production') {
+			$gmaps_js_api_url .= '&key=' . self::GMAPS_JS_API_KEY;
+		}
+		wp_register_script( 'rentiflat-gmaps-js-api', $gmaps_js_api_url, [ ], null, true );
 
 		wp_enqueue_script( 'rentiflat-main-js', Template_Helper::asset_path( 'scripts/main.js' ),
 			[ 'rentiflat-libraries-js' ], null, true );

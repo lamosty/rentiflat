@@ -15,7 +15,7 @@ if ( have_posts() ) :
 
 		$flat_owner = get_userdata( get_the_author_meta( 'ID' ) );
 
-		do_action('rentiflat_flat_page', get_the_ID(), $flat_owner);
+		do_action( 'rentiflat_flat_page', get_the_ID(), $flat_owner );
 
 		$post_id = get_the_ID();
 
@@ -63,7 +63,7 @@ if ( have_posts() ) :
 						<div class="title col-md-10">
 							<h1 class="name"><?= get_the_title(); ?></h1>
 
-							<div class="address">Bratislava, Slovakia</div>
+							<div class="address"><?= Flat::get_flat_address( $post_id ); ?></div>
 						</div>
 						<div class="price-info">
 							<div class="price">
@@ -77,7 +77,8 @@ if ( have_posts() ) :
 						<div class="feature col-md-3">
 							<i class="circle-icon mdi-maps-local-hotel"></i>
 
-							<div class="text">1 room</div>
+							<div
+								class="text"><?= get_the_terms( $post_id, Flat::$flat_types_taxonomy_id )[0]->name; ?></div>
 						</div>
 
 						<div class="feature col-md-3">

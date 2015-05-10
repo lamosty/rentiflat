@@ -41,7 +41,8 @@
         "johnpbloch/wordpress": "^4.1",
         "lamosty/bedrock-plugin-control": "~1",
         "facebook/php-sdk-v4": "~4.1.0@dev",
-        "wpackagist-plugin/json-rest-api": "~1.2"
+        "wpackagist-plugin/json-rest-api": "~1.2",
+        "willdurand/geocoder": "~3.0"
     },
     "require-dev": {
         "wpackagist-plugin/query-monitor": "dev-trunk",

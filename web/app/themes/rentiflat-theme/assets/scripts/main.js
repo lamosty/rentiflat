@@ -37,7 +37,14 @@
                     }),
                     document.getElementById('bids')
                 );
+            },
+
+            initGMap: function() {
+                var mapOptions = {
+                    zoom: 8
+                };
             }
+
         },
         page_template_page_fb_register: {
             init: function () {
