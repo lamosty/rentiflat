@@ -29,3 +29,6 @@ set :wpcli_local_url, "http://dev.rentiflat.lamosty.com/"
 
 fetch(:default_env).merge!(wp_env: :production)
 
+after "deploy:finalize_update" do
+  run "sudo chmod -R 777 fetch(:deploy_to).join('shared/web/app/uploads')"
+end
