@@ -1,0 +1,98 @@
+/*---------------------------------------------------------
+ Find flats page (page-find-flats.php)
+-------------------------------------------------------- */
+
+#find-flats {
+
+  .flats {
+    margin-top: 30px;
+  }
+
+  .flat {
+    display: block;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+
+    text-decoration: none;
+    color: inherit;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      .flat-inner {
+        background-color: rgba($blue-gray, 0.1);
+      }
+    }
+  }
+
+  .flat-inner {
+    @include floatfix;
+  }
+
+  .picture {
+    float: left;
+    width: 195px;
+
+  }
+
+  .main-info {
+    float: left;
+    width: 65%;
+    margin-left: 40px;
+
+    i {
+      font-size: 18px;
+      margin-right: 6px;
+
+    }
+
+    %items-margin-top {
+      margin-top: 8px;
+    }
+
+    .title {
+      @extend %items-margin-top;
+    }
+
+    .rooms {
+      @extend %items-margin-top
+    }
+
+    .area {
+      @extend %items-margin-top
+    }
+
+    .location {
+      @extend %items-margin-top;
+    }
+  }
+
+  .price-info-container {
+    float: right;
+    width: 120px;
+    margin-top: 20px;
+  }
+
+  .price-info {
+    background-color: $primary-color;
+    color: $white;
+    width: 120px;
+    padding: 15px;
+    text-align: center;
+
+    .price {
+      font-size: 24px;
+    }
+
+    .interval {
+      padding-top: 7px;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: $white-gray;
+    }
+  }
+
+}
