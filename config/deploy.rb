@@ -94,4 +94,4 @@ namespace :assets do
   task deploy: %w(compile copy)
 end
 
-after 'deploy:published', 'assets:deploy'
+#after 'deploy:published', 'assets:deploy'
