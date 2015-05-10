@@ -5,7 +5,9 @@
 
 namespace Lamosty\RentiFlat;
 
-use Lamosty\RentiFlat\Utils\Admin_Helper;
+use \Lamosty\RentiFlat\Utils\Admin_Helper;
+use \Lamosty\RentiFlat\Utils\Template_Helper;
+
 use \Ivory\HttpAdapter\CurlHttpAdapter;
 use \Geocoder\Provider\GoogleMaps;
 
@@ -250,6 +252,18 @@ class Flat {
 	public function add_flat_page_js_variables( $flat_page_id, $flat_owner ) {
 		$user = wp_get_current_user();
 
+		// User not logged in
+		if ( $user->ID == 0 ) {
+
+			// TODO: register URL with redirect back to the flat page
+			wp_localize_script( 'rentiflat-main-js', 'RentiFlatTenantData', [
+				'login_url'    => site_url( '/wp-login.php?redirect_to=' . Template_Helper::current_url() ),
+				'register_url' => home_url( '/register/' )
+			] );
+
+			return;
+		}
+
 		// Does the user have any previous bid on this flat?
 		$user_bids_query = new \WP_Query( [
 			'post_parent' => $flat_page_id,
@@ -324,8 +338,13 @@ class Flat {
 		wp_localize_script( 'rentiflat-main-js', 'RentiFlatBids', $bids );
 	}
 
-	public function enqueue_gmaps_js_api() {
+	public function enqueue_gmaps_js_api( $flat_page_id ) {
 		wp_enqueue_script( 'rentiflat-gmaps-js-api' );
+
+		wp_localize_script( 'rentiflat-main-js', 'RentiFlatGMapsData', [
+			'flat_lat' => get_post_meta( $flat_page_id, 'lat', true ),
+			'flat_lng' => get_post_meta( $flat_page_id, 'lng', true )
+		] );
 	}
 
 	public static function get_flat_address( $flat_page_id ) {

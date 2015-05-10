@@ -27,9 +27,10 @@
                 $('#flat-photos').find('[data-photo-large]').on('click', swap_large_image);
 
                 this.initBids();
+                this.initGMap();
             },
 
-            initBids: function() {
+            initBids: function () {
                 React.render(
                     React.createElement(FlatPageBids, {
                         'data': RentiFlatTenantData,
@@ -39,10 +40,16 @@
                 );
             },
 
-            initGMap: function() {
+            initGMap: function () {
                 var mapOptions = {
-                    zoom: 8
+                    zoom: 15,
+                    center: {
+                        lat: parseFloat(RentiFlatGMapsData['flat_lat']),
+                        lng: parseFloat(RentiFlatGMapsData['flat_lng'])
+                    }
                 };
+
+                var map = new google.maps.Map(document.getElementById('location-map'), mapOptions);
             }
 
         },
@@ -50,14 +57,14 @@
             init: function () {
                 var that = this;
 
-                $(document).on('rentiflat_fbInit', function() {
+                $(document).on('rentiflat_fbInit', function () {
                     that.authBtnClick();
                 });
             },
-            authBtnClick: function() {
+            authBtnClick: function () {
                 var that = this;
 
-                $('#fb-login').on('click', function(e) {
+                $('#fb-login').on('click', function (e) {
                     e.preventDefault();
 
                     FB.getLoginStatus(function (response) {
@@ -73,14 +80,14 @@
             doFBLogin: function () {
                 var that = this;
 
-                FB.login(function(response) {
+                FB.login(function (response) {
                     // authorized or logged in successfully
                     if (response.authResponse) {
                         that.handleFBLoggedIn(response.authResponse);
                     }
                 });
             },
-            handleFBLoggedIn: function(authData) {
+            handleFBLoggedIn: function (authData) {
                 $('#fb-login').hide();
                 $('#rentiflat-register-form').show();
             }
