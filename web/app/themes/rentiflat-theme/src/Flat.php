@@ -347,7 +347,7 @@ class Flat {
 		] );
 	}
 
-	public static function get_flat_address( $flat_page_id ) {
+	public static function get_address( $flat_page_id ) {
 		$country = get_the_terms( $flat_page_id, self::$country_taxonomy_id )[0]->name;
 		$city    = get_the_terms( $flat_page_id, self::$city_taxonomy_id )[0]->name;
 		$street  = get_post_meta( $flat_page_id, 'street_name', true );
@@ -356,7 +356,7 @@ class Flat {
 	}
 
 	public function address_to_latlng( $flat_page_id ) {
-		$flat_address_in_string = self::get_flat_address( $flat_page_id );
+		$flat_address_in_string = self::get_address( $flat_page_id );
 
 		$curl = new CurlHttpAdapter();
 
@@ -378,5 +378,17 @@ class Flat {
 			update_post_meta( $flat_page_id, 'lat', $geocoded_address->getLatitude() );
 			update_post_meta( $flat_page_id, 'lng', $geocoded_address->getLongitude() );
 		}
+	}
+
+	public static function get_type( $flat_page_id ) {
+		return get_the_terms( $flat_page_id, self::$flat_types_taxonomy_id )[0]->name;
+	}
+
+	public static function get_area( $flat_page_id ) {
+		return get_post_meta( $flat_page_id, 'area_m_squared', true );
+	}
+
+	public static function get_price( $flat_page_id ) {
+		return get_post_meta( $flat_page_id, 'price_per_month', true );
 	}
 }

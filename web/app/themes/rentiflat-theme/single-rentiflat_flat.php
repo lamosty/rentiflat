@@ -63,11 +63,11 @@ if ( have_posts() ) :
 						<div class="title col-md-10">
 							<h1 class="name"><?= get_the_title(); ?></h1>
 
-							<div class="address"><?= Flat::get_flat_address( $post_id ); ?></div>
+							<div class="address"><?= Flat::get_address( $post_id ); ?></div>
 						</div>
 						<div class="price-info">
 							<div class="price">
-								<?= get_post_meta( $post_id, 'price_per_month', true ); ?>
+								<?= Flat::get_price( $post_id ); ?>
 								<span class="currency">&euro;</span>
 							</div>
 							<div class="interval">per month</div>
@@ -78,7 +78,7 @@ if ( have_posts() ) :
 							<i class="circle-icon mdi-maps-local-hotel"></i>
 
 							<div
-								class="text"><?= get_the_terms( $post_id, Flat::$flat_types_taxonomy_id )[0]->name; ?></div>
+								class="text"><?= Flat::get_type( $post_id ); ?></div>
 						</div>
 
 						<div class="feature col-md-3">
@@ -97,7 +97,7 @@ if ( have_posts() ) :
 
 							<div class="text">
 								area
-								<?= get_post_meta( $post_id, 'area_m_squared', true ); ?>
+								<?= Flat::get_area( $post_id ); ?>
 								m<sup>2</sup>
 							</div>
 						</div>

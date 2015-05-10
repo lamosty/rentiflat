@@ -7,71 +7,55 @@
  * @ Lamosty.com 2015
  */
 
+namespace Lamosty\RentiFlat;
+
+$flats = new \WP_Query( [
+	'post_type' => Flat::$post_type_id
+] );
+
 ?>
 
 <section class="container" id="find-flats">
 	<h1>Find Flats</h1>
 
 	<div class="flats">
-		<a class="flat" href="#">
-			<div class="flat-inner">
-				<div class="picture">
-					<img src="holder.js/195x130" alt="Flat thumbnail"/>
-				</div>
-				<div class="main-info">
-					<h3 class="title">
-						Nice small flat in the city centre
-					</h3>
+		<?php
 
-					<div class="rooms">
-						<i class="mdi-maps-local-hotel"></i>
-						2 rooms
-					</div>
-					<div class="area">
-						<i class="mdi-image-texture"></i>
-						area 100 m<sup>2</sup>
-					</div>
-					<div class="location">Botanická, Bratislava, Slovakia</div>
-				</div>
-				<div class="price-info-container">
-					<div class="price-info">
-						<div class="price">
-							1450 <span class="currency">€</span>
-						</div>
-						<div class="interval">per month</div>
-					</div>
-				</div>
-			</div>
-		</a>
-		<a class="flat" href="#">
-			<div class="flat-inner">
-				<div class="picture">
-					<img src="holder.js/195x130" alt="Flat thumbnail"/>
-				</div>
-				<div class="main-info">
-					<h3 class="title">
-						Nice small flat in the city centre
-					</h3>
+		while ( $flats->have_posts() ) :
+			$flats->the_post();
 
-					<div class="rooms">
-						<i class="mdi-maps-local-hotel"></i>
-						2 rooms
+			?>
+
+			<a class="flat" href="<?= get_the_permalink(); ?>">
+				<div class="flat-inner">
+					<div class="picture">
+						<?= get_the_post_thumbnail( get_the_ID(), Theme::FLAT_FIND_FLATS_SIZE ); ?>
 					</div>
-					<div class="area">
-						<i class="mdi-image-texture"></i>
-						area 100 m<sup>2</sup>
-					</div>
-					<div class="location">Botanická, Bratislava, Slovakia</div>
-				</div>
-				<div class="price-info-container">
-					<div class="price-info">
-						<div class="price">
-							1450 <span class="currency">€</span>
+					<div class="main-info">
+						<h3 class="title">
+							<?= get_the_title(); ?>
+						</h3>
+
+						<div class="rooms">
+							<i class="mdi-maps-local-hotel"></i>
+							<?= Flat::get_type( get_the_ID() ); ?>
 						</div>
-						<div class="interval">per month</div>
+						<div class="area">
+							<i class="mdi-image-texture"></i>
+							area <?= Flat::get_area( get_the_ID() ); ?> m<sup>2</sup>
+						</div>
+						<div class="location"><?= Flat::get_address( get_the_ID() ); ?></div>
+					</div>
+					<div class="price-info-container">
+						<div class="price-info">
+							<div class="price">
+								<?= Flat::get_price( get_the_ID() ); ?> <span class="currency">€</span>
+							</div>
+							<div class="interval">per month</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</a>
+			</a>
+		<?php endwhile; ?>
 	</div>
 </section>
