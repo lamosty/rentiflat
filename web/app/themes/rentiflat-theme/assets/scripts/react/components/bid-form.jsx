@@ -79,8 +79,8 @@ var BidForm = React.createClass({
             <div className="bid-form-section col-md-6">
                 <h3>You have already placed a bid</h3>
                 <p>
-                To edit or delete the bid, visit the
-                    <a href={this.props.data['bid_admin_url']}>administration dashboard</a>
+                To edit or delete the bid, visit
+                the <a href={this.props.data['bid_admin_url']}>administration dashboard</a>
                 .
                 </p>
             </div>

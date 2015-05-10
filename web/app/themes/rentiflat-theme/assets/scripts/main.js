@@ -41,15 +41,24 @@
             },
 
             initGMap: function () {
+                var flatLatLng = new google.maps.LatLng(
+                    parseFloat(RentiFlatGMapsData['flat_lat']),
+                    parseFloat(RentiFlatGMapsData['flat_lng'])
+                );
+
                 var mapOptions = {
                     zoom: 15,
-                    center: {
-                        lat: parseFloat(RentiFlatGMapsData['flat_lat']),
-                        lng: parseFloat(RentiFlatGMapsData['flat_lng'])
-                    }
+                    center: flatLatLng,
+                    scrollwheel: false
                 };
 
                 var map = new google.maps.Map(document.getElementById('location-map'), mapOptions);
+
+                var flatMarker = new google.maps.Marker({
+                    position: flatLatLng,
+                    map: map,
+                    title: 'Flat'
+                });
             }
 
         },
