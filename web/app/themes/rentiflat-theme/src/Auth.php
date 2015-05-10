@@ -9,8 +9,8 @@ use Facebook\Facebook;
 use Facebook\Exceptions\FacebookSDKException;
 
 class Auth {
-	private $app_id = '741717739281848';
-	private $app_secret = '35209c6efe542f78bc00839ee7c47dfa';
+	private $app_id = '741714372615518';
+	private $app_secret = 'acfccab3db8a189065a052bd70db8835';
 
 	private $profile_pictures_path = 'rentiflat_profiles';
 
